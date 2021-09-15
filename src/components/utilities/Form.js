@@ -3,6 +3,7 @@ import { login } from '../../api/userAPI'
 import { Component, useEffect, useState } from "react"
 import {ButtonLog} from './Button'
 import {ButtonRegister} from './Button'
+import React from 'react'
 
 
 const LoginForm = () => {
@@ -35,13 +36,13 @@ const LoginForm = () => {
                 <input type="text" name="mdp"  onChange={(event)=>setMdp(event.target.value)} />
             </label>
             
-            <ButtonLog />
+            <ButtonLog value="SE CONNECTER"/>
            
         </form>
       </div>
       <div className="registration">
       <p>Vous n'avez pas encore de compte?</p>
-            <ButtonRegister />
+            <ButtonRegister value="S'INCRIRE"/>
       </div>
       </div>
   );

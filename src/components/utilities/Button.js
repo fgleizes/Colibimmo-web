@@ -1,15 +1,15 @@
 import './Button.css'
 
-export const ButtonLog = () => {
+export const ButtonLog = (props) => {
   return (
-                  <input className="submitLog" type="submit" value="SE CONNECTER" />
+                  <input className="submitLog" type="submit" value={props.value} />
   );
 }
  
 
-export const ButtonRegister = () => {
+export const ButtonRegister = (props) => {
     return (
-                    <input className="RegistrationButton" type="button" value="S'INSCRIRE"/>
+                <input className="RegistrationButton" type="button" value={props.value}/>
     );
   }
 

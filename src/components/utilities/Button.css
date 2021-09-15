@@ -20,7 +20,7 @@
 .RegistrationButton{ 
     width: 330px;   
     margin-top:10px;
-   border-radius: 0px 0px 5px 5px;
+   border-radius: 5px 5px 5px 5px;
    border:0.5px solid #76AFF2;
    height: 30px;
    background-color:seashell;
@@ -30,7 +30,7 @@
 
 .RegistrationButton:hover{    
    margin-top:10px;
-   border-radius: 0px 0px 5px 5px;
+   border-radius: 5px 5px 5px 5px;
    border:0.5px solid grey;
    height: 30px;
    background-color: #76AFF2;
