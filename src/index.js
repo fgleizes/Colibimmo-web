@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ContactView } from './components/views/ContactView';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ContactView />
   </React.StrictMode>,
   document.getElementById('root')
 );
