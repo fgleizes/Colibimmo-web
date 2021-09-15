@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+import LoginViews from './components/views/LoginView';
 import reportWebVitals from './reportWebVitals';
 import { ContactView } from './components/views/ContactView';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContactView />
+    <LoginViews />
   </React.StrictMode>,
   document.getElementById('root')
 );
