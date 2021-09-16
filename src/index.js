@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
 import Header from './components/utilities/Header';
 import HomeView from './components/views/HomeView';
 import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
+import LoginViews from './components/views/LoginView';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,7 +34,7 @@ ReactDOM.render(
           <EstimateView />
         </Route>
         <Route path="/login">
-          {/* <LoginForm /> */}
+          <LoginViews />
         </Route>
         <Route path="/maSelection">
           {/* <LoginForm /> */}
