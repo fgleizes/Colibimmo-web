@@ -10,7 +10,7 @@ const LoginView = () => {
       <LoginForm />
       <p>Vous n'avez pas encore de compte?</p>
       <Link to="/register" title="Créer votre compte">
-        <Button type="button">S'INCRIRE</Button>
+        <Button type="button">Inscription</Button>
       </Link>
     </div>
   );

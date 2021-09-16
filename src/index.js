@@ -8,6 +8,7 @@ import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
 import LoginView from './components/views/LoginView';
+import RegisterView from './components/views/RegisterView'
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,6 +39,9 @@ ReactDOM.render(
         </Route>
         <Route path="/maSelection">
           {/* <LoginForm /> */}
+        </Route>
+        <Route path="/register">
+          <RegisterView />
         </Route>
         <Route path="/">
           <Redirect to="/accueil" />
