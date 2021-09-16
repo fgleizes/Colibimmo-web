@@ -1,12 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import Header from './components/utilities/Header';
+import HomeView from './components/views/HomeView';
+import BuyView from './components/views/BuyView';
+import RentView from './components/views/RentView';
+import EstimateView from './components/views/EstimateView';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Header />
+
+      <Switch>
+        <Route path="/accueil">
+          <HomeView />
+        </Route>
+        <Route path="/acheter">
+          <BuyView />
+        </Route>
+        <Route path="/louer">
+          <RentView />
+        </Route>
+        <Route path="/estimer-un-bien">
+          <EstimateView />
+        </Route>
+        <Route path="/login">
+          {/* <LoginForm /> */}
+        </Route>
+        <Route path="/maSelection">
+          {/* <LoginForm /> */}
+        </Route>
+        <Route path="/">
+          <Redirect to="/accueil" />
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
