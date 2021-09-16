@@ -1,6 +1,5 @@
 form {
-    width: 300px;
-    height: 150px;
+    width: 400px;
     margin: 1.5rem;
     padding: 1rem;
     border-radius: .5rem;
@@ -12,5 +11,27 @@ form {
                 0 100px 80px rgba(0, 0, 0, 0.07);
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+}
+
+form input {
+    margin-bottom: 1rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+form input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: rgb(144, 185, 247, 25%);
+    outline: 0;
+    box-shadow: 0 0 4px 0.1rem #ced4da;
 }

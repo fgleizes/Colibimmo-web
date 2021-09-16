@@ -17,6 +17,10 @@ button {
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+button:focus{
+  outline: 0;
+  box-shadow: 0 0 3px 0.075rem #ced4da;
+}
 button[type="button"] {
   background-color: #fff;
   border: 1px solid rgb(252, 145, 126);
