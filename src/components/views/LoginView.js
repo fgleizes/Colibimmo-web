@@ -1,6 +1,6 @@
 
 
-import LoginFrom from "../utilities/Form"
+import {LoginForm} from "../utilities/Form"
 
 
 
@@ -14,7 +14,7 @@ function LoginViews() {
       <div>
         
        
-        <LoginFrom></LoginFrom>
+        <LoginForm></LoginForm>
       
       </div>
     </div>

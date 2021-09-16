@@ -8,3 +8,8 @@ export const login = (email,mdp) => {
        return res.data.access_token
     })
 }
+
+export const register = (user) => {
+    return axios.post(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/user/register`,user)
+    .catch(err => console.log(err.response))
+}

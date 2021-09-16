@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import LoginViews from './components/views/LoginView';
 import reportWebVitals from './reportWebVitals';
-import { ContactView } from './components/views/ContactView';
+import RegisterView from './components/views/RegisterView'
+import LoginViews from './components/views/LoginView'
 
 ReactDOM.render(
   <React.StrictMode>
     <LoginViews />
+    <RegisterView/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -9,7 +9,7 @@ export const ButtonLog = () => {
 
 export const ButtonRegister = () => {
     return (
-                    <input className="RegistrationButton" type="button" value="S'INSCRIRE"/>
+                    <input className="RegistrationButton" type="submit" value="S'INSCRIRE"/>
     );
   }
 

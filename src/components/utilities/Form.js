@@ -1,11 +1,11 @@
 import './Form.css'
-import { login } from '../../api/userAPI'
+import { login, register } from '../../api/userAPI'
 import { Component, useEffect, useState } from "react"
 import {ButtonLog} from './Button'
 import {ButtonRegister} from './Button'
 
 
-const LoginForm = () => {
+export const LoginForm = () => {
 
     const [token, setToken] = useState('')
     const [email, setEmail]= useState('')
@@ -49,4 +49,66 @@ const LoginForm = () => {
 }
 
 
-export default LoginForm;
+export const RegisterForm = () => {
+
+  const [lastname, setLastname]= useState('')
+  const [firstname, setFirstname]= useState('')
+  const [phone, setPhone]= useState('')
+  const [mail, setMail]= useState('')
+  const [password, setPassword]= useState('')
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const user = {
+        lastname: lastname,
+        firstname: firstname,
+        phone: phone,
+        mail: mail,
+        password: password,
+      };
+
+
+   register(user)
+    
+  }
+
+return (
+    
+    <div className="container">
+    <div className="registerBloc">
+    <p>{lastname}</p>
+    <p>{firstname}</p>
+    <p>{phone}</p>
+    <p>{mail}</p>
+    <p>{password}</p>
+    
+     <form onSubmit={handleSubmit}>
+          <label className="lastname">
+              <p>Nom</p>
+              <input type="text" name="lastname" onChange={(event)=>setLastname(event.target.value)}/>
+          </label>
+          <label className="firstname">
+              <p>Prénom</p>
+              <input type="text" name="firstname" onChange={(event)=>setFirstname(event.target.value)}/>
+          </label>
+          <label className="phone">
+              <p>Téléphone</p>
+              <input type="text" name="phone" onChange={(event)=>setPhone(event.target.value)}/>
+          </label>
+          <label className="mail">
+              <p>email</p>
+              <input type="text" name="mail" onChange={(event)=>setMail(event.target.value)}/>
+          </label>
+          <label className="password">
+              <p>mot de passe :</p>
+              <input type="text" name="mdp"  onChange={(event)=>setPassword(event.target.value)} />
+          </label>
+          
+          <ButtonRegister/>
+         
+      </form>
+    </div>
+    </div>
+);
+
+}
