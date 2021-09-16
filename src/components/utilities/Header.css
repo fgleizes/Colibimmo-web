@@ -3,7 +3,6 @@ header {
   height: 6rem;
   position: relative;
   padding: 0 2rem;
-  position: sticky;
 }
 header nav {
   height: 100%;

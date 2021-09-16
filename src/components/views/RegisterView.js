@@ -6,24 +6,24 @@ import { RegisterForm } from "../utilities/Form"
 import "./RegisterView.css"
 
 function RegisterView() {
-  const [isRegister, setIsRegister] = useState(false)
+  const [isRegister, setIsRegister] = useState()
 
   const handleSubmit = (event,user) => {
     event.preventDefault();
-    register(user).then(data => {
-      if (data && data.status === 201) {
+    register(user).then(response => {
+      if (response.status === 201) {
         setIsRegister(true)
       } else {
-        setIsRegister("error")
+        setIsRegister(false)
       }
     })
   }
 
-  if (isRegister) {
+  if (isRegister === true) {
     return (
       <div className="registerView">
         <h2>
-          Vous inscription a bien été prise en compte !
+          Votre inscription a bien été prise en compte !
         </h2>
         <p>Connectez-vous ici : </p>
         <Link to="/login" title="Me connecter à mon compte">
@@ -34,6 +34,8 @@ function RegisterView() {
   } else {
     return (
       <div className="registerView">
+        { isRegister === false && <h2 className="error">Votre inscription n'a pas été prise en compte ! Veuillez réessayer :</h2> }
+        { isRegister === undefined && <h2>Informations d'inscription :</h2> }
         <RegisterForm handleSubmit={handleSubmit}/>
         <p>Vous avez déjà un compte? Connectez-vous ici : </p>
         <Link to="/login" title="Créer votre compte">
