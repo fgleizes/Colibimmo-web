@@ -19,7 +19,7 @@ button {
 }
 button[type="button"] {
   background-color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid rgb(252, 145, 126);
   color: rgb(252, 145, 126);
 }
 button[type="button"]:hover {
@@ -28,14 +28,14 @@ button[type="button"]:hover {
   color: #fff;
 }
 button[type="submit"] {
-  background-color: lightgreen;
-  border: 1px solid lightgreen;
-  color: white;
+  background-color: #fff;
+  border: 1px solid rgb(131, 211, 131);
+  color: rgb(131, 211, 131);
 }
 button[type="submit"]:hover {
   background-color: rgb(131, 211, 131);
-  border: 1px solid rgb(131, 211, 131);
-  color: white;
+  border-color: rgb(131, 211, 131);
+  color: #fff;
 }
 button[type="reset"] {
   background-color: rgb(255, 78, 78);
@@ -70,41 +70,3 @@ button.like:hover {
   background-color: rgb(252, 145, 126);
   border-color: rgb(252, 145, 126);
 } */
-.submitLog:hover{    
-    margin-top:10px;
-   width: 100%;
-   border-radius: 0px 0px 5px 5px;
-   border:0.5px solid grey;
-   height: 30px;
-   background-color: salmon;
-   color: #fff;
-}
-.submitLog{    
-    margin-top:10px;
-   width: 100%;
-   border-radius: 0px 0px 5px 5px;
-   border:0.5px solid rgb(228, 94, 79);
-   height: 30px;
-   background-color:seashell;
-   color: rgb(228, 94, 79);
-   transition-duration: 0.5s
-}
-.RegistrationButton{ 
-    width: 330px;   
-    margin-top:10px;
-   border-radius: 5px 5px 5px 5px;
-   border:0.5px solid #76AFF2;
-   height: 30px;
-   background-color:seashell;
-   color: #76AFF2;
-   transition-duration: 0.5s
-}
-
-.RegistrationButton:hover{    
-   margin-top:10px;
-   border-radius: 5px 5px 5px 5px;
-   border:0.5px solid grey;
-   height: 30px;
-   background-color: #76AFF2;
-   color: #fff;
-}

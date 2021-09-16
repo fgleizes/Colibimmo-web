@@ -7,7 +7,7 @@ import HomeView from './components/views/HomeView';
 import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
-import LoginViews from './components/views/LoginView';
+import LoginView from './components/views/LoginView';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,7 +34,7 @@ ReactDOM.render(
           <EstimateView />
         </Route>
         <Route path="/login">
-          <LoginViews />
+          <LoginView />
         </Route>
         <Route path="/maSelection">
           {/* <LoginForm /> */}

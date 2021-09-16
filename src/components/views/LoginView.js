@@ -1,24 +1,19 @@
+import { Link } from "react-router-dom"
+import { Button } from "../utilities/Button"
+import { LoginForm } from "../utilities/Form"
+import "./LoginView.css"
 
-
-import LoginFrom from "../utilities/Form"
-
-
-
-
-
-
-function LoginViews() {
+const LoginView = () => {
   
   return (
-    <div className="LoginForm">
-      <div>
-        
-       
-        <LoginFrom></LoginFrom>
-      
-      </div>
+    <div className="loginView">
+      <LoginForm />
+      <p>Vous n'avez pas encore de compte?</p>
+      <Link to="/register" title="Créer votre compte">
+        <Button type="button">S'INCRIRE</Button>
+      </Link>
     </div>
   );
 }
 
-export default LoginViews;
+export default LoginView;
