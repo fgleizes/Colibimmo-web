@@ -1,27 +1,34 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link, useHistory, Redirect } from "react-router-dom"
 import { login } from "../../api/userAPI"
 import { Button } from "../utilities/Button"
 import { LoginForm } from "../utilities/Form"
 import "./LoginView.css"
 
+import { UserContext } from "../../user-context";
+
+
 const LoginView = () => {
+  const contextUser= useContext(UserContext);
   const history = useHistory()
-  const [token, setToken] = useState('')
+  // const [token, setToken] = useState('')
   const [isLoggin, setIsLoggin] = useState()
 
   const handleSubmit = (event, mail, password) => {
     event.preventDefault()
     login(mail,password).then(response => {
       if (response.status === 200) {
-        setToken(response.data.access_token)
         setIsLoggin(true)
+        contextUser.login(response.data.access_token, {firstname: 'Florent', lastname: "Gleizes"})
         history.push("/home")
-      } else {
+      } 
+      else {
         setIsLoggin(false)
       }
     })
   }
+
+  console.log(contextUser)
 
   // if (isLoggin === true) {
   //   return <Redirect to="/home" />
