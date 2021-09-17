@@ -25,7 +25,6 @@ export const LoginForm = () => {
         <input type="text" placeholder="Saisissez votre password" name="password" onChange={(event) => setPassword(event.target.value)} />
         <Button type="submit">SE CONNECTER</Button>
       </form>
-      <p>{token}</p>
     </>
   );
 }

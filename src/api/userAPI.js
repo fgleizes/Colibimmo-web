@@ -29,7 +29,7 @@ export const register = user => {
 }
 
 
-export const getProfil = (token) => {
+export const getProfile = (token) => {
     const URL = `${API_URL}me`
     return axios.get(URL, {
         headers: { Authorization: `Bearer ${token}` }

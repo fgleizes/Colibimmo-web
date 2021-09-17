@@ -15,7 +15,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Profile } from './components/utilities/Profile';
+import { ProfileView } from './components/views/ProfileView';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -40,7 +40,7 @@ ReactDOM.render(
         </Route>
         {/*test profil*/}
         <Route path="/profil">
-          <Profile />
+          <ProfileView />
         </Route>
         <Route path="/maSelection">
           {/* <LoginForm /> */}
