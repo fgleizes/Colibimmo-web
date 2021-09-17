@@ -1,9 +1,7 @@
 import "./Header.css";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
-import { AiFillHome } from 'react-icons/ai';
-import { AiOutlineHeart } from 'react-icons/ai';
-
+import { AiFillHome, AiOutlineHeart } from 'react-icons/ai';
 
 const Header = () => {
   return (

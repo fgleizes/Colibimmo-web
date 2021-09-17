@@ -1,6 +1,6 @@
 form {
     width: 400px;
-    margin: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 1rem;
     border-radius: .5rem;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -14,6 +14,7 @@ form {
 }
 
 form input {
+    width: 100%;
     margin-bottom: 1rem;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -34,4 +35,20 @@ form input:focus {
     border-color: rgb(144, 185, 247, 25%);
     outline: 0;
     box-shadow: 0 0 4px 0.1rem #ced4da;
+}
+
+.error {
+    color: red;
+}
+
+.container-password {
+    position: relative;
+}
+.container-password svg {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+    cursor: default;
+    z-index: 2;
+    color: #969696;
 }

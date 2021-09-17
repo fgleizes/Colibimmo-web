@@ -17,42 +17,46 @@ import {
 } from "react-router-dom";
 import { ProfileView } from './components/views/ProfileView';
 
+const UserContext = React.createContext('user');
+console.log(UserContext)
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Header />
+    <UserContext.Provider value="dark">
+      <Router>
+        <Header />
 
-      <Switch>
-        <Route path="/accueil">
-          <HomeView />
-        </Route>
-        <Route path="/acheter">
-          <BuyView />
-        </Route>
-        <Route path="/louer">
-          <RentView />
-        </Route>
-        <Route path="/estimer-un-bien">
-          <EstimateView />
-        </Route>
-        <Route path="/login">
-          <LoginView />
-        </Route>
-        {/*test profil*/}
-        <Route path="/profil">
-          <ProfileView />
-        </Route>
-        <Route path="/maSelection">
-          {/* <LoginForm /> */}
-        </Route>
-        <Route path="/register">
-          <RegisterView />
-        </Route>
-        <Route path="/">
-          <Redirect to="/accueil" />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route path="/home">
+            <HomeView />
+          </Route>
+          <Route path="/buy">
+            <BuyView />
+          </Route>
+          <Route path="/rent">
+            <RentView />
+          </Route>
+          <Route path="/eestimate">
+            <EstimateView />
+          </Route>
+          <Route path="/login">
+            <LoginView />
+          </Route>
+          <Route path="/profil">
+            <ProfileView />
+          </Route>
+          <Route path="/my-selection">
+            {/* <LoginForm /> */}
+          </Route>
+          <Route path="/register">
+            <RegisterView />
+          </Route>
+          <Route path="/">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
+      </Router>
+    </UserContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
