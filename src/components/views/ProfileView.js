@@ -5,7 +5,7 @@ import "./ProfileView.css"
 export const ProfileView = () => {
     const [profileUser, setProfileUser] = useState()    
     useEffect(() => {
-        getProfile('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjcyNzk5NywiZXhwIjoxNjMyNzMxNTk3LCJuYmYiOjE2MzI3Mjc5OTcsImp0aSI6IlBFdzNFVGo3bzU1Q1pmVHIiLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.PKQCWWewlrS2WRQ2-YNgyuHV3n5T0lgEQp_4CHDlrs4')
+        getProfile('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjcyOTIxNCwiZXhwIjoxNjMyNzMyODE0LCJuYmYiOjE2MzI3MjkyMTQsImp0aSI6InhpVEhDUmQ3R0NHeVdhVGciLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.Geiq8bWHYSTHFxbFXJjEcUsY2CUplnmg_7g5Moud3dw')
             .then( response => {
                 console.log(response)
                 if(response.status === 200 ){
@@ -42,7 +42,7 @@ export const ProfileView = () => {
     }
     const [roleUser, setRoleUser] = useState()    
     useEffect(() => {
-        getRole(objCopy.id_Role,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjcyNzk5NywiZXhwIjoxNjMyNzMxNTk3LCJuYmYiOjE2MzI3Mjc5OTcsImp0aSI6IlBFdzNFVGo3bzU1Q1pmVHIiLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.PKQCWWewlrS2WRQ2-YNgyuHV3n5T0lgEQp_4CHDlrs4')
+        getRole(objCopy.id_Role,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjcyOTIxNCwiZXhwIjoxNjMyNzMyODE0LCJuYmYiOjE2MzI3MjkyMTQsImp0aSI6InhpVEhDUmQ3R0NHeVdhVGciLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.Geiq8bWHYSTHFxbFXJjEcUsY2CUplnmg_7g5Moud3dw')
             .then( response => {
                 console.log(response)
                 if(response.status === 200 ){

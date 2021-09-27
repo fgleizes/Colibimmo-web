@@ -17,6 +17,7 @@ const LoginView = () => {
         setToken(response.data.access_token)
         setIsLoggin(true)
         history.push("/home")
+        console.log(response.data.access_token)
       } else {
         setIsLoggin(false)
       }
