@@ -20,7 +20,7 @@ const LoginView = () => {
       if (response.status === 200) {
         setIsLoggin(true)
         contextUser.login(response.data.access_token, {firstname: 'Florent', lastname: "Gleizes"})
-        history.push("/home")
+        history.push("/profile")
       } 
       else {
         setIsLoggin(false)

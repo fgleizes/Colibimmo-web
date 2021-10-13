@@ -16,20 +16,23 @@ import {
   Redirect
 } from "react-router-dom";
 import './index.css';
+import { ProfileView } from './components/views/ProfileView';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <UserContextProvider>
       <Router>
-        <Header />
-        
+        <Header />        
         <Switch>
           <Route path="/home">
             <HomeView />
           </Route>
           <Route path="/buy">
             <BuyView />
+          </Route>
+          <Route path="/profile">
+            <ProfileView/>
           </Route>
           <Route path="/rent">
             <RentView />
