@@ -7,6 +7,9 @@ import { UserContext } from "../../user-context";
 export const ProfileView = () => {
     const contextUser = useContext(UserContext);
     console.log(contextUser.token)
+    localStorage.setItem('userToken', contextUser.token)
+    console.log(localStorage.getItem('userToken'))
+    
     const [profileUser, setProfileUser] = useState()
     useEffect(() => {
         getProfile(contextUser.token)
@@ -45,6 +48,10 @@ export const ProfileView = () => {
     }, [thisProfileUser, contextUser]);
 
     const thisRoleUser = { ...roleUser }
+
+    localStorage.setItem('userFirstname', thisProfileUser.firstname)
+    localStorage.setItem('userLastname', thisProfileUser.lastname)
+    console.log(localStorage.getItem('userFirstname'))
 
     /*if(roleUser) {
         for (const key in roleUser) {

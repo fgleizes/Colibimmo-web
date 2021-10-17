@@ -5,6 +5,8 @@ import { UserContext } from "../../user-context";
 
 function HomeView() {
   const contextUser = useContext(UserContext);
+  console.log(localStorage.getItem('userFirstname'))
+  
   return (
     <div className="container">
       <h1>Bienvenue {`${contextUser.user.firstname} ${contextUser.user.lastname}`} sur ColibImmo</h1>

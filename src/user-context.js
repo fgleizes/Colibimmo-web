@@ -33,6 +33,8 @@ export const UserContextProvider = ({ children }) => {
     setIsLoggedIn(false)
     setToken(null)
     setUser({ lastname: "", firstname: "" })
+    localStorage.removeItem('userFirstname')
+    localStorage.removeItem('userLastname')
   }
 
   const userData = {
