@@ -1,5 +1,5 @@
 import "./Form.css"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "./Button"
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
@@ -19,7 +19,7 @@ export const LoginForm = props => {
       setShowPassword(false)
     }
   }
-  
+
   return (
     <form onSubmit={(e) => handleSubmit(e, mail, password)}>
       <input type="email" placeholder="Saisissez votre email" name="mail" onChange={(event)=>setMail(event.target.value)} required />
@@ -32,7 +32,9 @@ export const LoginForm = props => {
   );
 }
 
-export const RegisterForm = props => {
+
+
+export const RegisterForm = (props) => {
   const {handleSubmit} = props
   const [user, setUser] = useState({})
   const [showPassword, setShowPassword] = useState(false)

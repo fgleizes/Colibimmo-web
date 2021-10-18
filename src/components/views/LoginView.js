@@ -7,6 +7,8 @@ import "./LoginView.css"
 
 import { UserContext } from "../../user-context";
 
+console.log(localStorage.getItem('userFirstname'))
+
 
 const LoginView = () => {
   const contextUser= useContext(UserContext);
@@ -19,8 +21,8 @@ const LoginView = () => {
     login(mail,password).then(response => {
       if (response.status === 200) {
         setIsLoggin(true)
-        contextUser.login(response.data.access_token, {firstname: 'Florent', lastname: "Gleizes"})
-        history.push("/home")
+        contextUser.login(response.data.access_token, {firstname: localStorage.getItem('userFirstname'), lastname: localStorage.getItem('userLastname')})
+        history.push("/profile")
       } 
       else {
         setIsLoggin(false)

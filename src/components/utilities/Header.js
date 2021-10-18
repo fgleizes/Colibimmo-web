@@ -24,6 +24,12 @@ const Header = () => {
           <li>
             <Link to="/estimate" className="menuLink">Estimer un bien</Link>
           </li>
+          <li>
+          {contextUser.isLoggedIn
+            ? <Link to="/profile" className="menuLink">Profile</Link>
+            : null
+          }
+          </li>
         </ul>
         <div className="nav-right">
           <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="like"><AiOutlineHeart /></Button></Link>
