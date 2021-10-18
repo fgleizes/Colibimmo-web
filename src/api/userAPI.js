@@ -11,7 +11,7 @@ export const login = (email,mdp) => {
         })
         .catch(error => {
             if (error.response) {
-                return error.response
+                console.log(error.response)
             } 
             else if (error.request) {
                 console.log(error.request);
@@ -29,7 +29,7 @@ export const register = user => {
         })
         .catch(error => {
             if (error.response) {
-                return error.response
+                console.log(error.response)
             }
             else if (error.request) {
                 console.log(error.request);
