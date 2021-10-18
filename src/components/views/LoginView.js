@@ -1,40 +1,40 @@
 import { useState, useContext } from "react"
-import { Link, useHistory, Redirect } from "react-router-dom"
-import { login } from "../../api/userAPI"
+import { Link, Redirect } from "react-router-dom"
+import { login, getProfile } from "../../api/userAPI"
 import { Button } from "../utilities/Button"
 import { LoginForm } from "../utilities/Form"
 import "./LoginView.css"
 
 import { UserContext } from "../../user-context";
 
-console.log(localStorage.getItem('userFirstname'))
-
-
 const LoginView = () => {
   const contextUser= useContext(UserContext);
-  const history = useHistory()
-  // const [token, setToken] = useState('')
   const [isLoggin, setIsLoggin] = useState()
 
   const handleSubmit = (event, mail, password) => {
     event.preventDefault()
+
     login(mail,password).then(response => {
       if (response.status === 200) {
-        setIsLoggin(true)
-        contextUser.login(response.data.access_token, {firstname: localStorage.getItem('userFirstname'), lastname: localStorage.getItem('userLastname')})
-        history.push("/profile")
+        const token = response.data.access_token
+        getProfile(token)
+        .then(response => {
+          if (response.status === 200) {
+            contextUser.login(token, { firstname: response.data.firstname, lastname: response.data.lastname })
+              setIsLoggin(true)
+            }
+          })
       } 
       else {
         setIsLoggin(false)
       }
     })
+    
   }
 
-  console.log(contextUser)
-
-  // if (isLoggin === true) {
-  //   return <Redirect to="/home" />
-  // }
+  if (isLoggin === true) {
+    return <Redirect to="/profile" />
+  }
 
   return (
     <div className="loginView">

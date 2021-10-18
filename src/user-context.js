@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 export const UserContext = React.createContext({
-  user: {},
-  token: "",
   isLoggedIn: false,
-  setUser: () => { },
-  setToken: () => { },
+  token: "",
+  user: {},
   setIsLoggedIn: () => { },
+  setToken: () => { },
+  setUser: () => { },
   login: () => { },
   logout: () => { }
 });
@@ -28,21 +28,25 @@ export const UserContextProvider = ({ children }) => {
     setIsLoggedIn(true)
     setToken(token)
     setUser(user)
+    localStorage.setItem("isLoggedIn", true)
+    localStorage.setItem("userToken", token)
+    localStorage.setItem("user", JSON.stringify(user))
   }
   const logout = () => {
     setIsLoggedIn(false)
     setToken(null)
     setUser({ lastname: "", firstname: "" })
-    localStorage.removeItem('userFirstname')
-    localStorage.removeItem('userLastname')
+    localStorage.removeItem("isLoggedIn")
+    localStorage.removeItem("userToken")
+    localStorage.removeItem('user')
   }
-
+      
   const userData = {
-    token: token,
-    setToken: saveToken,
-    isLoggedIn: isLoggedIn,
+    isLoggedIn: localStorage.getItem("isLoggedIn") ? localStorage.getItem("isLoggedIn")  : isLoggedIn,
+    token: localStorage.getItem("userToken") ? localStorage.getItem("userToken") : token,
+    user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : user,
     setIsLoggedIn: saveIsLoggedIn,
-    user: user,
+    setToken: saveToken,
     setUser: saveUser,
     login: login,
     logout: logout

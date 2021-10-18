@@ -1,75 +1,53 @@
 import { useContext, useEffect, useState } from "react"
-import { getRole } from "../../api/roleAPI"
-import { getProfile } from "../../api/userAPI"
-import "./ProfileView.css"
 import { UserContext } from "../../user-context";
+import { getProfile } from "../../api/userAPI"
+import { getRole } from "../../api/roleAPI"
+import { Redirect } from "react-router-dom"
+import "./ProfileView.css"
 
 export const ProfileView = () => {
     const contextUser = useContext(UserContext);
-    console.log(contextUser.token)
-    localStorage.setItem('userToken', contextUser.token)
-    console.log(localStorage.getItem('userToken'))
-    
+    const token = contextUser.token
     const [profileUser, setProfileUser] = useState()
+    let createdDate = ""
+
     useEffect(() => {
-        getProfile(contextUser.token)
+        getProfile(token)
             .then(response => {
-                //console.log(contextUser.token)
-                //console.log(response)
                 if (response.status === 200) {
-                    setProfileUser(response.data);
+                    const user = response.data;
+                    getRole(user.id_Role, token)
+                        .then(response => {
+                            setProfileUser({ ...user, "role": response.data.name })
+                        })
                 }
             })
-    }, [contextUser]);
+    }, [token]);
 
-    /*if(profileUser) {
-       for (const key in profileUser) {
-           if (profileUser.hasOwnProperty.call(profileUser, key) && profileUser[key] != null) {
-               console.log(key);
-               console.log(profileUser[key]);
+    if (profileUser && profileUser.created_at) {
 
-               //console.log(getRole(profileUser.id_Role,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjQ5NzI1OSwiZXhwIjoxNjMyNTAwODU5LCJuYmYiOjE2MzI0OTcyNTksImp0aSI6IjBlVjgxMHZ1bWZTTllERDYiLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.RbsNJK4FjjN4Q9z_OEsDQbs9bVA_M_Sj43Q8q6Szrys'))
-                   console.log(profileUser.id_Role)
-           }
-       }
-   }*/
+        createdDate = new Date(profileUser.created_at)
+        let createdDay = createdDate.getDate() < 10 ? "0" + createdDate.getDate() : createdDate.getDate()
+        let createdMonth = createdDate.getMonth() < 10 ? "0" + createdDate.getMonth() : createdDate.getMonth()
+        let createdYear = createdDate.getFullYear()
+        createdDate = `${createdDay}/${createdMonth}/${createdYear}`
+    }
 
-    const thisProfileUser = { ...profileUser }
-    const [roleUser, setRoleUser] = useState()
-    useEffect(() => {
-        getRole(thisProfileUser.id_Role, contextUser.token)
-            .then(response => {
-                //console.log(response)
-                const thisResponse = { ...response }
-                if (thisResponse.status === 200) {
-                    setRoleUser(response.data);
-                }
-            })
-    }, [thisProfileUser, contextUser]);
-
-    const thisRoleUser = { ...roleUser }
-
-    localStorage.setItem('userFirstname', thisProfileUser.firstname)
-    localStorage.setItem('userLastname', thisProfileUser.lastname)
-    console.log(localStorage.getItem('userFirstname'))
-
-    /*if(roleUser) {
-        for (const key in roleUser) {
-            if (roleUser.hasOwnProperty.call(roleUser, key) && roleUser[key] != null) {
-                console.log(key);
-                console.log(roleUser[key]);
-
-                //console.log(getRole(profileUser.id_Role,'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuY29saWJpbW1vLmNkYS52ZS5tYW51c2llbi1lY29sZWxhbWFudS5mclwvcHVibGljXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjQ5NzI1OSwiZXhwIjoxNjMyNTAwODU5LCJuYmYiOjE2MzI0OTcyNTksImp0aSI6IjBlVjgxMHZ1bWZTTllERDYiLCJzdWIiOjIsInBydiI6ImEzNGY0ODg3NDdjNDFmMWQxYTAzNTU4NDE2NjNmYWYxOTI3MDNhMmIifQ.RbsNJK4FjjN4Q9z_OEsDQbs9bVA_M_Sj43Q8q6Szrys'))
-                    console.log(roleUser.name)
-            }
-        }
-    }*/
+    if (!contextUser.isLoggedIn) {
+        return <Redirect to="/home" />
+    }
 
     return (
         <ul className="profileView">
-            <li>Nom et Prénom : {thisProfileUser.lastname} {thisProfileUser.firstname}</li>
-            <li>Rôle : {thisRoleUser.name}</li>
-            <li>Mail : {thisProfileUser.mail}</li>
+            <li>Prénom : {profileUser && profileUser.firstname}</li>
+            <li>Nom : {profileUser && profileUser.lastname}</li>
+            {profileUser && profileUser.id_Agency && <li>Agence : {profileUser.id_Agency}</li>}
+            <li>Adresse : {profileUser && profileUser.id_Address}</li>
+            <li>Rôle : {profileUser && profileUser.role}</li>
+            <li>Téléphone : {profileUser && profileUser.phone}</li>
+            <li>Mail : {profileUser && profileUser.mail}</li>
+            <li>Crée le : {profileUser && createdDate}</li>
+            <li>Modifié le : {profileUser && profileUser.updated_at}</li>
         </ul>
     )
 }

@@ -1,5 +1,5 @@
 import "./Form.css"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Button } from "./Button"
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
@@ -73,18 +73,14 @@ export const Form = props => {
     const objectForm = { ...formContent }
     Object.defineProperty(objectForm, inputName, {
       value: event.target.value,
-      // writable: true,
       enumerable: true,
-      // configurable: true
     })
     setFormContent(objectForm)
   }
 
   return (
     <form onSubmit={(e) => handleSubmit(e, formContent)}>
-      {/* <input type="text" name="lastname" placeholder="Nom" onChange={(event) => setUser({ ...user, lastname: event.target.value })} required /> */}
       {inputs.map((input, index) => input.type === "textarea" 
-        // ? <textarea name={input.name} placeholder={input.placeholder} required={input.required} onChange={(event) => setFormContent({ ...formContent, `${event.target.name}` : event.target.value })}></textarea>
         ? <textarea 
             name={input.name} 
             placeholder={input.placeholder} 
