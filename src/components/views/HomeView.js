@@ -5,7 +5,6 @@ import { UserContext } from "../../user-context";
 
 function HomeView() {
   const contextUser = useContext(UserContext);
-  console.log(localStorage.getItem('userFirstname'))
   
   return (
     <div className="container">
