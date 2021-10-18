@@ -25,7 +25,10 @@ const Header = () => {
             <Link to="/estimate" className="menuLink">Estimer un bien</Link>
           </li>
           <li>
-          <Link to="/profile" className="menuLink">Profile</Link>
+          {contextUser.isLoggedIn
+            ? <Link to="/profile" className="menuLink">Profile</Link>
+            : null
+          }
           </li>
         </ul>
         <div className="nav-right">
