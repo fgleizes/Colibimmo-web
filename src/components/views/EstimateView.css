@@ -1,6 +1,5 @@
-/* form {
-  width: 500px;
-  margin: auto;
+.estimateView {
   display: flex;
   flex-direction: column;
-} */
+  align-items: center;
+}

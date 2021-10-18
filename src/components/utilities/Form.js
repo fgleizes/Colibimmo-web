@@ -1,10 +1,9 @@
-// import React from 'react'
 import "./Form.css"
 import { useState } from "react"
 import { Button } from "./Button"
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
-export const LoginForm = (props) => {
+export const LoginForm = props => {
   const {handleSubmit} = props
   const [mail, setMail]= useState('')
   const [password, setPassword]= useState('')
@@ -23,9 +22,9 @@ export const LoginForm = (props) => {
   
   return (
     <form onSubmit={(e) => handleSubmit(e, mail, password)}>
-      <input type="email" placeholder="Saisissez votre email" name="mail" onChange={(event)=>setMail(event.target.value)}/>
+      <input type="email" placeholder="Saisissez votre email" name="mail" onChange={(event)=>setMail(event.target.value)} required />
       <div className="container-password">
-        <input type="password" id="password" placeholder="Saisissez votre password" name="password" onChange={(event) => setPassword(event.target.value)} />
+        <input type="password" id="password" placeholder="Saisissez votre password" name="password" onChange={(event) => setPassword(event.target.value)} required />
         {showPassword ? <BsEyeSlash onClick={togglePassword} /> : <BsEye onClick={togglePassword} />}
       </div>
       <Button type="submit">SE CONNECTER</Button>
@@ -33,7 +32,7 @@ export const LoginForm = (props) => {
   );
 }
 
-export const RegisterForm = (props) => {
+export const RegisterForm = props => {
   const {handleSubmit} = props
   const [user, setUser] = useState({})
   const [showPassword, setShowPassword] = useState(false)
@@ -62,4 +61,48 @@ export const RegisterForm = (props) => {
       <Button type="submit">INSCRIPTION</Button>
     </form>
   );
+}
+
+export const Form = props => {
+  const {inputs, handleSubmit} = props
+  const [formContent, setFormContent] = useState({})
+
+  const handleChange = (event, inputName) => {
+    const objectForm = { ...formContent }
+    Object.defineProperty(objectForm, inputName, {
+      value: event.target.value,
+      // writable: true,
+      enumerable: true,
+      // configurable: true
+    })
+    setFormContent(objectForm)
+  }
+
+  return (
+    <form onSubmit={(e) => handleSubmit(e, formContent)}>
+      {/* <input type="text" name="lastname" placeholder="Nom" onChange={(event) => setUser({ ...user, lastname: event.target.value })} required /> */}
+      {inputs.map((input, index) => input.type === "textarea" 
+        // ? <textarea name={input.name} placeholder={input.placeholder} required={input.required} onChange={(event) => setFormContent({ ...formContent, `${event.target.name}` : event.target.value })}></textarea>
+        ? <textarea 
+            name={input.name} 
+            placeholder={input.placeholder} 
+            required={input.required} 
+            key={index} 
+            onChange={(e) => handleChange(e, input.name)}
+          ></textarea>
+        : <input 
+            type={input.type} 
+            name={input.name} 
+            placeholder={input.placeholder} 
+            required={input.required} 
+            pattern={input.pattern} 
+            minLength={input.minLength} 
+            maxLength={input.maxLength} 
+            key={index} 
+            onChange={(e) => handleChange(e, input.name)}
+          ></input>
+      )}
+      {props.children}
+    </form>
+  )
 }
