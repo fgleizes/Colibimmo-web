@@ -10,10 +10,9 @@ import { getAgency } from "../../api/agencyAPI";
 export const ProfileView = () => {
     const contextUser = useContext(UserContext);
     const token = contextUser.token
-    const [profileUser, setProfileUser] = useState()
-    const [profileUserAddress, setProfileUserAddress]=useState()
-    const [profileUserAgency, setProfileUserAgency]=useState()
-    let createdDate = ""
+    const [profileUser, setProfileUser] = useState({})
+    const [userAddress, setUserAddress]=useState({})
+    const [userAgency, setUserAgency]=useState({})
 
     useEffect(() => {
         getProfile(token)
@@ -23,56 +22,59 @@ export const ProfileView = () => {
                     getRole(user.id_Role, token)
                         .then(response => {
                             setProfileUser({ ...user, "role": response.data.name })
-                            console.log(response.data)
                         })
                     if(user.id_Address != null){
                         getAddress(user.id_Address, token)
-                        .then(response=>{
-                            setProfileUserAddress({ ...user, "address": response.data.number + " " 
-                            + response.data.street +" Bâtiment : "+ response.data.building +" étage : "+ response.data.floor + " residence "+ response.data.residence })
-                        })
-                    }else{
-                            setProfileUserAddress({ ...user, "address": "Ne possede pas d'adresse" })
+                            .then(response=>{
+                                setUserAddress(response.data) 
+                            })
                     }
-
                     if(user.id_Agency != null){
                         getAgency(user.id_Agency, token)
                             .then(response=>{
-                                setProfileUserAgency({ ...user, "agency": response.data.name + " mail : "+ response.data.mail + " téléphone : " + response.data.phone})
+                                setUserAgency(response.data)
                             })
-                    }else{
-                        setProfileUserAgency({ ...user, "agency": "Ne possede pas d'agence" })
                     }
-                    
-                    
                 }
             })
     }, [token]);
-
-    if (profileUser && profileUser.created_at) {
-
-        createdDate = new Date(profileUser.created_at)
-        let createdDay = createdDate.getDate() < 10 ? "0" + createdDate.getDate() : createdDate.getDate()
-        let createdMonth = createdDate.getMonth() < 10 ? "0" + createdDate.getMonth() : createdDate.getMonth()
-        let createdYear = createdDate.getFullYear()
-        createdDate = `${createdDay}/${createdMonth}/${createdYear}`
-    }
 
     if (!contextUser.isLoggedIn) {
         return <Redirect to="/home" />
     }
 
     return (
-        <ul className="profileView">
-            <li>Prénom : {profileUser && profileUser.firstname}</li>
-            <li>Nom : {profileUser && profileUser.lastname}</li>
-            {profileUserAgency && profileUserAgency.agency && <li>Agence : {profileUserAgency.agency}</li>}
-            <li>Adresse : {profileUserAddress && profileUserAddress.address}</li>
-            <li>Rôle : {profileUser && profileUser.role}</li>
-            <li>Téléphone : {profileUser && profileUser.phone}</li>
-            <li>Mail : {profileUser && profileUser.mail}</li>
-            <li>Crée le : {profileUser && createdDate}</li>
-            <li>Modifié le : {profileUser && profileUser.updated_at}</li>
-        </ul>
+        <div className="profileView">
+            {profileUser &&
+                <div className="userProfile">
+                    <h1>Informations utilisateur</h1>
+                    <ul>
+                        <li>Prénom : {profileUser.firstname}</li>
+                        <li>Nom : {profileUser.lastname}</li>
+                        <li>Téléphone : {profileUser.phone}</li>
+                        <li>Mail : {profileUser.mail}</li>
+                        <li>Rôle : {profileUser.role}</li>
+                        <li>Crée le : {profileUser.created_at}</li>
+                        <li>Modifié le : {profileUser.updated_at}</li>
+                    </ul>
+                </div>
+            }
+            {profileUser && profileUser.id_Address && userAddress && 
+                <div className="userAddress">
+                    <h2>Adresse :</h2>
+                    <ul>
+                        {Object.keys(userAddress).map(key => userAddress[key] && key !== "id" && <li>{key}: {userAddress[key]}</li>)}
+                    </ul>
+                </div>
+            }
+            {profileUser && profileUser.id_Agency && userAgency &&
+                <div className="userAgency">
+                    <h2>Informations agence :</h2>
+                    <ul>
+                        {Object.keys(userAgency).map(key => userAgency[key] && key !== "id" && <li>{key}: {userAgency[key]}</li>)}
+                    </ul>
+                </div>
+            }
+        </div>
     )
 }
