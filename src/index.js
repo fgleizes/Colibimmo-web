@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/utilities/Header';
 import HomeView from './components/views/HomeView';
@@ -8,30 +7,35 @@ import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
 import LoginView from './components/views/LoginView';
+
 import RegisterView from './components/views/RegisterView'
 import PropertyView from './components/views/PropertyView';
+import { UserContextProvider } from "./user-context"
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
+import './index.css';
+import { ProfileView } from './components/views/ProfileView';
 
-const UserContext = React.createContext('user');
-console.log(UserContext)
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserContext.Provider value="dark">
+    <UserContextProvider>
       <Router>
-        <Header />
-
+        <Header />        
         <Switch>
           <Route path="/home">
             <HomeView />
           </Route>
           <Route path="/buy">
             <BuyView />
+          </Route>
+          <Route path="/profile">
+            <ProfileView/>
           </Route>
           <Route path="/rent">
             <RentView />
@@ -45,9 +49,7 @@ ReactDOM.render(
           <Route path="/login">
             <LoginView />
           </Route>
-          <Route path="/my-selection">
-            {/* <LoginForm /> */}
-          </Route>
+          <Route path="/mySelection"></Route>
           <Route path="/register">
             <RegisterView />
           </Route>
@@ -56,7 +58,7 @@ ReactDOM.render(
           </Route>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </UserContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

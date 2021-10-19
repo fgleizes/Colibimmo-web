@@ -11,7 +11,7 @@ export const login = (email,mdp) => {
         })
         .catch(error => {
             if (error.response) {
-                return error.response
+                console.log(error.response)
             } 
             else if (error.request) {
                 console.log(error.request);
@@ -29,12 +29,57 @@ export const register = user => {
         })
         .catch(error => {
             if (error.response) {
-                return error.response
+                console.log(error.response)
             }
             else if (error.request) {
                 console.log(error.request);
             } else {
                 console.log('Error', error.message);
             }
+        })
+}
+
+
+export const getProfile = (token) => {
+    const URL = `${API_URL}me`
+    return axios.get(URL, { headers: { Authorization: `Bearer ${token}` } })
+        .then(response => {
+            return response
+        })
+        .catch(error => {
+            console.log(error)
+            console.log(error.response)
+        })
+}
+
+export const logout = (token) => {
+    const URL = `${API_URL}logout`
+    return axios.get(URL, {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(response => {
+            console.log(response)
+            console.log(response.data)
+            return response
+        })
+        .catch(error => {
+            console.log(error)
+            console.log(error.response)
+        })
+}
+
+export const refresh = (token) => {
+    const URL = `${API_URL}refresh`
+    return axios.get(URL, {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+        .then(response => {
+            console.log(response)
+            console.log(response.data)
+            return response
+        })
+        .catch(error => {
+            console.log(error)
+            console.log(error.response)
         })
 }

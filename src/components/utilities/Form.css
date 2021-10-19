@@ -13,7 +13,7 @@ form {
     flex-direction: column;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     margin-bottom: 1rem;
     padding: .375rem .75rem;
@@ -29,7 +29,12 @@ form input {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-form input:focus {
+form textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+form input:focus, form textarea:focus {
     color: #212529;
     background-color: #fff;
     border-color: rgb(144, 185, 247, 25%);
@@ -51,4 +56,9 @@ form input:focus {
     cursor: default;
     z-index: 2;
     color: #969696;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: space-evenly;;
 }

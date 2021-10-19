@@ -58,14 +58,14 @@ button[type="submit"]:hover {
   color: #fff;
 }
 button[type="reset"] {
-  background-color: rgb(255, 78, 78);
-  border: 1px solid rgb(255, 78, 78);
-  color: black;
+  background-color: #fff;
+  border: 1px solid rgb(138, 138, 138);
+  color: rgb(138, 138, 138);
 }
 button[type="reset"]:hover {
-  background-color: red;
-  border: 1px solid red;
-  color: black;
+  background-color: rgb(138, 138, 138);
+  border: 1px solid rgb(138, 138, 138);
+  color: #fff;
 }
 
 
