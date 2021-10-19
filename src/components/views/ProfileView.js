@@ -4,11 +4,15 @@ import { getProfile } from "../../api/userAPI"
 import { getRole } from "../../api/roleAPI"
 import { Redirect } from "react-router-dom"
 import "./ProfileView.css"
+import { getAddress } from "../../api/adresseAPI";
+import { getAgency } from "../../api/agencyAPI";
 
 export const ProfileView = () => {
     const contextUser = useContext(UserContext);
     const token = contextUser.token
     const [profileUser, setProfileUser] = useState()
+    const [profileUserAddress, setProfileUserAddress]=useState()
+    const [profileUserAgency, setProfileUserAgency]=useState()
     let createdDate = ""
 
     useEffect(() => {
@@ -19,7 +23,28 @@ export const ProfileView = () => {
                     getRole(user.id_Role, token)
                         .then(response => {
                             setProfileUser({ ...user, "role": response.data.name })
+                            console.log(response.data)
                         })
+                    if(user.id_Address != null){
+                        getAddress(user.id_Address, token)
+                        .then(response=>{
+                            setProfileUserAddress({ ...user, "address": response.data.number + " " 
+                            + response.data.street +" Bâtiment : "+ response.data.building +" étage : "+ response.data.floor + " residence "+ response.data.residence })
+                        })
+                    }else{
+                            setProfileUserAddress({ ...user, "address": "Ne possede pas d'adresse" })
+                    }
+
+                    if(user.id_Agency != null){
+                        getAgency(user.id_Agency, token)
+                            .then(response=>{
+                                setProfileUserAgency({ ...user, "agency": response.data.name + " mail : "+ response.data.mail + " téléphone : " + response.data.phone})
+                            })
+                    }else{
+                        setProfileUserAgency({ ...user, "agency": "Ne possede pas d'agence" })
+                    }
+                    
+                    
                 }
             })
     }, [token]);
@@ -41,8 +66,8 @@ export const ProfileView = () => {
         <ul className="profileView">
             <li>Prénom : {profileUser && profileUser.firstname}</li>
             <li>Nom : {profileUser && profileUser.lastname}</li>
-            {profileUser && profileUser.id_Agency && <li>Agence : {profileUser.id_Agency}</li>}
-            <li>Adresse : {profileUser && profileUser.id_Address}</li>
+            {profileUserAgency && profileUserAgency.agency && <li>Agence : {profileUserAgency.agency}</li>}
+            <li>Adresse : {profileUserAddress && profileUserAddress.address}</li>
             <li>Rôle : {profileUser && profileUser.role}</li>
             <li>Téléphone : {profileUser && profileUser.phone}</li>
             <li>Mail : {profileUser && profileUser.mail}</li>
