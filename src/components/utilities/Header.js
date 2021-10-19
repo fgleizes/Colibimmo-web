@@ -6,7 +6,7 @@ import { AiFillHome, AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 import { useState, useContext, } from "react";
 import ConfirmModal from './Modal';
 import { UserContext } from "../../user-context";
-import { AiFillHome, AiOutlineHeart } from 'react-icons/ai';
+
 
 const Header = () => {
   const contextUser = useContext(UserContext);
