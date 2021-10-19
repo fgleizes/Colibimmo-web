@@ -21,12 +21,12 @@ button:focus{
   outline: 0;
   box-shadow: 0 0 3px 0.075rem #ced4da;
 }
-button[type="button"] {
+button[type="button"]:not(.btn-close) {
   background-color: #fff;
   border: 1px solid rgb(252, 145, 126);
   color: rgb(252, 145, 126);
 }
-button[type="button"]:hover {
+button[type="button"]:not(.btn-close):hover {
   background-color: rgb(252, 145, 126);
   border-color: rgb(252, 145, 126);
   color: #fff;
