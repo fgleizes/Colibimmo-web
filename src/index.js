@@ -9,6 +9,7 @@ import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
 import LoginView from './components/views/LoginView';
 import RegisterView from './components/views/RegisterView'
+import PropertyView from './components/views/PropertyView';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,8 +36,11 @@ ReactDOM.render(
           <Route path="/rent">
             <RentView />
           </Route>
-          <Route path="/eestimate">
+          <Route path="/estimate">
             <EstimateView />
+          </Route>
+          <Route path="/voir un bien">
+            <PropertyView />
           </Route>
           <Route path="/login">
             <LoginView />

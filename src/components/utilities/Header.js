@@ -1,7 +1,8 @@
 import "./Header.css";
 import { Button } from "./Button";
+import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
-import { AiFillHome, AiOutlineHeart } from 'react-icons/ai';
+import { AiFillHome, AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
 
 const Header = () => {
   return (
@@ -21,8 +22,15 @@ const Header = () => {
           <li>
             <Link to="/estimer-un-bien" className="menuLink">Estimer un bien</Link>
           </li>
+          <li>
+            <Link to="/voir un bien" className="menuLink">Voir un bien</Link>
+          </li>
         </ul>
+        
         <div className="nav-right">
+          <div className="searchBar">
+            <SearchBar></SearchBar><Button type="submitSearch" ><AiOutlineSearch /></Button>
+          </div>
           <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="like"><AiOutlineHeart /></Button></Link>
           <Link to="/login" title="Me connecter à mon compte"><Button type="button">Connexion</Button></Link>
         </div>

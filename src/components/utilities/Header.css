@@ -27,6 +27,12 @@ header nav .nav-right {
   align-items: center;
   height: 100%;
 }
+header .searchBar{
+  width: 190px;
+  height: 40px;
+  display: inline;
+
+}
 header nav ul {
   list-style-type: none;
   display: flex;

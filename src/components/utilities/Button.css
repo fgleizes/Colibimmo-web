@@ -25,11 +25,27 @@ button[type="button"] {
   background-color: #fff;
   border: 1px solid rgb(252, 145, 126);
   color: rgb(252, 145, 126);
+  height: 40px;
 }
 button[type="button"]:hover {
   background-color: rgb(252, 145, 126);
   border-color: rgb(252, 145, 126);
   color: #fff;
+}
+button[type="submitSearch"] {
+  background-color: #fff;
+  border: solid 0.5px #B4B4B4;
+  color:#B4B4B4;
+  height: 40px;
+  width: 40px;
+  border-radius: 0px 10px 10px 0px;
+  display: inline;
+}
+button[type="submitSearch"]:hover {
+  background-color: lightgreen;
+  border-color: lightgreen;
+  color: #fff;
+  
 }
 button[type="submit"] {
   background-color: #fff;
@@ -52,6 +68,9 @@ button[type="reset"]:hover {
   color: black;
 }
 
+
+
+
 /* .outline-dark {
   color: #212529;
   border-color: #212529;
@@ -68,7 +87,7 @@ button[type="reset"]:hover {
 }
 button.like {
   color: rgb(252, 145, 126);
-}
+} 
 button.like:hover {
   color: #fff;
   background-color: rgb(252, 145, 126);
