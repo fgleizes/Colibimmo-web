@@ -1,3 +1,6 @@
 .profileView{
     list-style: none;
 }
+.profileView h1{
+    text-align: center;
+}

@@ -3,9 +3,9 @@ import { UserContext } from "../../user-context";
 import { getProfile } from "../../api/userAPI"
 import { getRole } from "../../api/roleAPI"
 import { Redirect } from "react-router-dom"
-import "./ProfileView.css"
 import { getAddress } from "../../api/adresseAPI";
 import { getAgency } from "../../api/agencyAPI";
+import "./ProfileView.css"
 
 const ProfileView = () => {
     const contextUser = useContext(UserContext);
@@ -56,7 +56,7 @@ const ProfileView = () => {
             <h1>Mes informations utilisateur</h1>
             {profileUser &&
                 <div className="userProfile">
-                    <h2>Utilisateur : </h2>
+                    <h2>Mon profil : </h2>
                     <ul>
                         <li>Prénom : {profileUser.firstname}</li>
                         <li>Nom : {profileUser.lastname}</li>
