@@ -5,32 +5,32 @@ import { getRole } from "../../api/roleAPI"
 import { Redirect } from "react-router-dom"
 import "./ProfileView.css"
 
-export const ProfileView = () => {
+const ProfileView = () => {
     const contextUser = useContext(UserContext);
     const token = contextUser.token
     const [profileUser, setProfileUser] = useState()
-    let createdDate = ""
 
     useEffect(() => {
-        getProfile(token)
-            .then(response => {
-                if (response.status === 200) {
-                    const user = response.data;
-                    getRole(user.id_Role, token)
-                        .then(response => {
-                            setProfileUser({ ...user, "role": response.data.name })
-                        })
-                }
-            })
+        if (token) {
+            getProfile(token)
+                .then(response => {
+                    if (response && response.status === 200) {
+                        const user = response.data;
+                        getRole(user.id_Role, token)
+                            .then(response => {
+                                setProfileUser({ ...user, "role": response.data.name })
+                            })
+                    }
+                })
+        }
     }, [token]);
 
-    if (profileUser && profileUser.created_at) {
-
-        createdDate = new Date(profileUser.created_at)
-        let createdDay = createdDate.getDate() < 10 ? "0" + createdDate.getDate() : createdDate.getDate()
-        let createdMonth = createdDate.getMonth() < 10 ? "0" + createdDate.getMonth() : createdDate.getMonth()
-        let createdYear = createdDate.getFullYear()
-        createdDate = `${createdDay}/${createdMonth}/${createdYear}`
+    const formatDate = (profileUserdate) => {
+        let date = new Date(profileUserdate)
+        let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+        let month = date.getMonth() < 10 ? "0" + (date.getMonth()+1) : (date.getMonth()+1)
+        let year = date.getFullYear()
+        return `${day}/${month}/${year}`;
     }
 
     if (!contextUser.isLoggedIn) {
@@ -46,8 +46,10 @@ export const ProfileView = () => {
             <li>Rôle : {profileUser && profileUser.role}</li>
             <li>Téléphone : {profileUser && profileUser.phone}</li>
             <li>Mail : {profileUser && profileUser.mail}</li>
-            <li>Crée le : {profileUser && createdDate}</li>
-            <li>Modifié le : {profileUser && profileUser.updated_at}</li>
+            <li>Créé le : {profileUser && formatDate(profileUser.created_at)}</li>
+            <li>Modifié le : {profileUser && formatDate(profileUser.updated_at)}</li>
         </ul>
     )
 }
+
+export default ProfileView;
