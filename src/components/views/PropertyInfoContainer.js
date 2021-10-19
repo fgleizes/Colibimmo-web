@@ -1,23 +1,19 @@
 
-import { Component, useEffect, useState } from "react"
-import { showProperty } from "../../api/propertyAPI";
-import { Link } from "react-router-dom";
-import { AiFillHome } from 'react-icons/ai';
-import { AiOutlineHeart } from 'react-icons/ai';
+import {  useEffect, useState } from "react"
+import {  showProperty } from "../../api/propertyAPI";
 import '../utilities/Button.css'
-import {Button} from '../utilities/Button'
-import ListOptionProperty from '../utilities/listOptionProperty'
 import ListInfoProperty from '../utilities/ListInfoProperty'
 import ImgProperty from '../utilities/ImgProperty'
+import OptionProperty from '../utilities/OptionProperty';
 
 export const PropertyInfoContainer = () => {
-    const [data,setData] = useState({});
+    const [dataProperty,setDataProperty] = useState({});
     const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
         showProperty().then(res => {
             console.log(res)
-            setData(res)
+            setDataProperty(res)
             setIsLoading(false)
         });
     },[])
@@ -27,8 +23,15 @@ export const PropertyInfoContainer = () => {
             {!isLoading &&
                 <div className="InfoProperty">
                     <ImgProperty/>
-                    <ListInfoProperty data={data}/>
-                    <ListOptionProperty options={data.project_option} className="listOptionProperty" type="p" />
+                    <ListInfoProperty dataProperty={dataProperty}/>
+                    <ul>
+                        {dataProperty.project_option.map(option => (
+                            // <p>{option.id_Option}</p>
+                            // console.log(option.id_Option);
+                            <OptionProperty optionId={option.id_Option} key={option.id}/>
+                        ))}
+                    </ul>
+                    {/* <ListOptionProperty options={data.project_option} className="listOptionProperty" type="p" /> */}
                 </div>
             }
         </div>
