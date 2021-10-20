@@ -22,3 +22,18 @@ export const showOption = (id_Option) => {
         
     })
 }
+
+
+
+
+export const listPropertyByCity = () => {
+    
+    return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project` )
+    
+    
+    .then(resList => {
+        console.log(resList.data)
+       return resList.data
+       
+    })
+}

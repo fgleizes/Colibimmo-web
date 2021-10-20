@@ -26,12 +26,9 @@ export const PropertyInfoContainer = () => {
                     <ListInfoProperty dataProperty={dataProperty}/>
                     <ul>
                         {dataProperty.project_option.map(option => (
-                            // <p>{option.id_Option}</p>
-                            // console.log(option.id_Option);
                             <OptionProperty optionId={option.id_Option} key={option.id}/>
                         ))}
                     </ul>
-                    {/* <ListOptionProperty options={data.project_option} className="listOptionProperty" type="p" /> */}
                 </div>
             }
         </div>

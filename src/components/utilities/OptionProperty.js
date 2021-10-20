@@ -11,7 +11,7 @@ const OptionProperty = (props) => {
             setDataOption(res)
           
         });
-    },[])
+    },[optionId])
 
     return (
         <li key={key}> 

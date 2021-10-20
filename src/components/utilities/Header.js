@@ -1,8 +1,8 @@
 import "./Header.css";
 import { Button } from "./Button";
-import { SearchBar } from "./SearchBar";
+// import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
-import { AiFillHome, AiOutlineHeart, AiOutlineSearch } from 'react-icons/ai';
+import { AiFillHome, AiOutlineHeart } from 'react-icons/ai';
 import { useState, useContext, } from "react";
 import ConfirmModal from './Modal';
 import { UserContext } from "../../user-context";
@@ -48,12 +48,15 @@ const Header = () => {
           <li>
             <Link to="/voir un bien" className="menuLink">Voir un bien</Link>
           </li>
+          <li>
+            <Link to="/liste biens" className="menuLink">Liste biens</Link>
+          </li>
         </ul>
         
         <div className="nav-right">
-          <div className="searchBar">
+          {/* <div className="searchBar">
             <SearchBar></SearchBar><Button type="submitSearch" ><AiOutlineSearch /></Button>
-          </div>
+          </div> */}
           <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="like"><AiOutlineHeart /></Button></Link>
           {contextUser.isLoggedIn
             // ? <Link to="/logout" title="Me déconnecter de mon compte" onClick={contextUser.logout}><Button type="button">Déconnexion</Button></Link>

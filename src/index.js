@@ -7,7 +7,7 @@ import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
 import EstimateView from './components/views/EstimateView';
 import LoginView from './components/views/LoginView';
-
+import ListPropertyView from './components/views/ListPropertyView'
 import RegisterView from './components/views/RegisterView'
 import PropertyView from './components/views/PropertyView';
 import { UserContextProvider } from "./user-context"
@@ -45,6 +45,9 @@ ReactDOM.render(
           </Route>
           <Route path="/voir un bien">
             <PropertyView />
+          </Route>
+          <Route path="/liste biens">
+            <ListPropertyView />
           </Route>
           <Route path="/login">
             <LoginView />
