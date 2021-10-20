@@ -19,6 +19,7 @@
 .userProfile,
 .agencyDetails {
     flex-basis: 100%;
+    box-shadow: 0px 10px 16px 3px lightgrey;
 }
 .tab-content {
     border: 1px solid rgb(252, 145, 126);

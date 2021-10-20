@@ -81,7 +81,6 @@ const ProfileView = () => {
                             activeKey={userKey}
                             defaultActiveKey="userInformations"
                             onSelect={(k) => setUserKey(k)}
-                            className="userProfile"
                             variant="tabs"
                         >
                             <Tab eventKey="userInformations" title="Informations">
@@ -151,7 +150,6 @@ const ProfileView = () => {
                             activeKey={agencyKey}
                             defaultActiveKey="agencyInformations"
                             onSelect={(k) => setAgencyKey(k)}
-                            className="agencyDetails"
                             variant="tabs"
                         >
                             <Tab eventKey="agencyInformations" title="Informations">
