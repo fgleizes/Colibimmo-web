@@ -31,6 +31,12 @@ button[type="button"]:not(.btn-close):hover {
   border-color: rgb(252, 145, 126);
   color: #fff;
 }
+button[type="button"]:not(.btn-close):active,
+button[type="button"]:not(.btn-close).active {
+  background-color: tomato;
+  border-color: tomato;
+  color: #fff;
+}
 button[type="submit"] {
   background-color: #fff;
   border: 1px solid rgb(131, 211, 131);

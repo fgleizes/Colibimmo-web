@@ -20,6 +20,8 @@ export const UserContextProvider = ({ children }) => {
     setToken(token)
   }
   const saveUser = (user) => {
+    user.firstname = user.firstname.charAt(0).toUpperCase() + user.firstname.substring(1).toLowerCase()
+    user.lastname = user.lastname.charAt(0).toUpperCase() + user.lastname.substring(1).toLowerCase()
     setUser(user)
   }
   const saveIsLoggedIn = (isLoggedIn) => {
@@ -27,16 +29,16 @@ export const UserContextProvider = ({ children }) => {
   }
   const login = (token, user) => {
     setIsLoggedIn(true)
-    setToken(token)
-    setUser(user)
+    saveToken(token)
+    saveUser(user)
     localStorage.setItem("isLoggedIn", true)
     localStorage.setItem("userToken", token)
     localStorage.setItem("user", JSON.stringify(user))
   }
   const logout = () => {
     setIsLoggedIn(false)
-    setToken(null)
-    setUser({ lastname: "", firstname: "" })
+    saveToken(null)
+    saveUser({ lastname: "", firstname: "" })
     localStorage.removeItem("isLoggedIn")
     localStorage.removeItem("userToken")
     localStorage.removeItem('user')
