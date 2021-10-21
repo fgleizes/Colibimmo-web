@@ -2,7 +2,8 @@
 import '../utilities/Button.css'
 import {listPropertyByCity} from "../../api/propertyAPI"
 import {  useEffect, useState } from "react"
-
+import ProjectCard from '../utilities/ProjectCard'
+import './PropertyView.css'
 
 
 function ListPropertyView () {
@@ -22,19 +23,11 @@ return (
     <div>
         
         {!isLoading &&
-        <ul>
+        <div className="containerPropertyView">
             {dataPropertyList.map(itemProject => 
-            <div className="propertyCard">
-                <ul>
-                <li> {itemProject.reference} </li>
-                <li> {itemProject.id_Type_project} </li>
-                <li> {itemProject.id_Type_project} </li>
-                <li> {itemProject.max_area}</li>
-                <li> {itemProject.price}</li>
-                </ul>
-            </div>
+            <ProjectCard itemProject={itemProject}/>
             )}
-        </ul>
+        </div>
         }
     </div>
 );   

@@ -6,7 +6,7 @@ function ListInfoProperty(props) {
     // const type = props.type
 
     return (
-        <ul className="listDescProperty">
+        <ul className="descProperty">
             <li><h2>{dataProperty.id_Type_project} {dataProperty.id_Statut_project}</h2></li>
             <li>5 PIECES : 3 CHAMBRES //données à recuperer//<hr></hr></li>
             <li>prix : {dataProperty.price}</li>
