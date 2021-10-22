@@ -8,26 +8,5 @@
 .profileView h1{
     text-align: center;
     flex-basis: 100%;
-}
-.userContainer, .agencyContainer {
-    flex-basis: 45%;
-}
-.userContainer h2, .agencyContainer h2 {
-    flex-basis: 100%;
-    text-align: center;
-}
-.userProfile,
-.agencyDetails {
-    flex-basis: 100%;
-    box-shadow: 0px 10px 16px 3px lightgrey;
-}
-.tab-content {
-    border: 1px solid rgb(252, 145, 126);
-    border-top: none;
-}
-.profileView .nav-tabs .nav-item {
-    flex-basis: 50%;
-}
-.profileView .nav-tabs .nav-item button {
-    width: 100%;
+    margin: 2rem;
 }

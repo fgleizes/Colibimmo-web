@@ -1,0 +1,28 @@
+.userContainer, .agencyContainer {
+  flex-basis: 45%;
+}
+.userContainer h2, .agencyContainer h2 {
+  flex-basis: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.userProfile,
+.agencyDetails {
+  flex-basis: 100%;
+  box-shadow: 0px 10px 16px 3px lightgrey;
+}
+.tab-content {
+  padding: 1rem;
+  height: 297px;
+}
+.tab-content ul {
+  margin: 0;
+}
+.profileView .nav-tabs .nav-item {
+  flex-basis: 50%;
+}
+.profileView .nav-tabs .nav-item button {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(252, 145, 126);
+}
