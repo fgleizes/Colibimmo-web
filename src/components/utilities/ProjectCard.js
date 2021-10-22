@@ -5,16 +5,9 @@ import { Link } from "react-router-dom";
  
 const ProjectCard = (props) => {
 const {itemProject} = props
-const idProject=itemProject.id
-
-const handleClick = (e) => {
-    // e.preventDefault()
-    console.log(idProject)
-    
-}
 
 return(
-<div className="propertyCard" idProject={itemProject.id}>
+<div className="propertyCard">
     <img className="imgPropertyThumbnail" alt="du bien" src="https://www.trecobat.fr/wp-content/uploads/2020/04/construction-maison-neuve-trecobat-ille-et-vilaine-2.jpg"/>
     <div className="rightCard">
         <div className="listDescProperty">
@@ -28,9 +21,10 @@ return(
             <p className="shortDesc">{itemProject.short_description}</p>
         </div>
         <div className="boutonsCard">
-            <Link ><Button type="buttonListLike" className="like"><AiOutlineHeart /></Button></Link>
-            <Link to={`/property/${idProject}`} onClick={handleClick}  ><Button type="buttonListCheck" className="like"><AiOutlineCheck /></Button></Link>
-           
+            <Button type="buttonListLike" className="like"><AiOutlineHeart /></Button>
+            <Link to={`/property/${itemProject.id}`}>
+                <Button type="buttonListCheck" className="like"><AiOutlineCheck /></Button>
+            </Link>
         </div>
     </div>
 </div>

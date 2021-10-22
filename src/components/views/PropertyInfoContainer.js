@@ -1,7 +1,4 @@
 
-import {  useEffect, useState } from "react"
-import {  showProperty } from "../../api/propertyAPI";
-import '../utilities/Button.css'
 import ListInfoProperty from '../utilities/ListInfoProperty'
 import ImgProperty from '../utilities/ImgProperty'
 import OptionProperty from '../utilities/OptionProperty';

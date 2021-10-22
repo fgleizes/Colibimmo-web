@@ -1,7 +1,6 @@
 
-import '../utilities/Button.css'
-import {listPropertyByCity} from "../../api/propertyAPI"
-import {  useEffect, useState } from "react"
+import { listPropertyByCity } from "../../api/propertyAPI"
+import { useEffect, useState } from "react"
 import ProjectCard from '../utilities/ProjectCard'
 import './PropertyView.css'
 
@@ -12,24 +11,21 @@ function ListPropertyView () {
 
     useEffect(() => {
         listPropertyByCity().then(resList => {
-            console.log(resList)
             setDataPropertyList(resList)
             setIsLoading(false)
         });
     },[])
 
-return (
-    
-    <div>
-        
-        {!isLoading &&
-        <div className="containerPropertyView">
-            {dataPropertyList.map(itemProject => 
-            <ProjectCard itemProject={itemProject}/>
-            )}
+    return (
+        <div>
+            {!isLoading &&
+                <div className="containerPropertyView">
+                    {dataPropertyList.map((itemProject, index) => 
+                        <ProjectCard itemProject={itemProject} key={index} />
+                    )}
+                </div>
+            }
         </div>
-        }
-    </div>
-);   
+    );   
 }
- export default ListPropertyView
+export default ListPropertyView
