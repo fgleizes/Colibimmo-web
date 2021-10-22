@@ -1,4 +1,5 @@
 import { Button } from "./Button";
+// import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
 import { useState, useContext, } from "react";
 import { ConfirmModal } from './Modal';
@@ -35,22 +36,33 @@ const Header = () => {
           <li>
             <Link to="/estimate" className="menuLink">Estimer un bien</Link>
           </li>
+          <li>
+            {contextUser.isLoggedIn && <Link to="/profile" className="menuLink">Profile</Link>}
+          </li>
+          <li>
+            <Link to="/liste biens" className="menuLink">Liste biens</Link>
+          </li>
         </ul>
+        
         <div className="nav-right">
-            {contextUser.isLoggedIn && 
-              <>
-                <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="menuLink like"><AiOutlineHeart className="icon" /></Button></Link>
-                <Link to="/profile">
-                  <Button type="button" className="menuLink" title="Accéder à mon compte">
-                    <CgProfile className="icon profile" /> {contextUser.user.firstname} {contextUser.user.lastname}
-                  </Button>
-                </Link>
-              </>
-            }
-            {contextUser.isLoggedIn
-              ? <Button type="button" title="Me déconnecter de mon compte" handleClick={handleShow} className="menuLink">Déconnexion</Button>
-              : <Link to="/login" title="Me connecter à mon compte"><Button type="button" className="menuLink">Connexion</Button></Link>
-            }
+          {/* <div className="searchBar">
+            <SearchBar></SearchBar><Button type="submitSearch" ><AiOutlineSearch /></Button>
+          </div> */}
+          {contextUser.isLoggedIn && 
+            <>
+              <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="menuLink like"><AiOutlineHeart className="icon" /></Button></Link>
+              <Link to="/profile">
+                <Button type="button" className="menuLink" title="Accéder à mon compte">
+                  <CgProfile className="icon profile" /> {contextUser.user.firstname} {contextUser.user.lastname}
+                </Button>
+              </Link>
+            </>
+          }
+          
+          {contextUser.isLoggedIn
+            ? <Button type="button" title="Me déconnecter de mon compte" handleClick={handleShow} className="menuLink">Déconnexion</Button>
+            : <Link to="/login" title="Me connecter à mon compte"><Button type="button" className="menuLink">Connexion</Button></Link>
+          }
         </div>
       </nav>
       <ConfirmModal

@@ -15,7 +15,7 @@ button {
   padding: .375rem .75rem;
   font-size: 1rem;
   border-radius: .25rem;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  
 }
 button:focus{
   outline: 0;
@@ -25,6 +25,7 @@ button[type="button"]:not(.btn-close) {
   background-color: #fff;
   border: 1px solid rgb(252, 145, 126);
   color: rgb(252, 145, 126);
+  height: 40px;
 }
 button[type="button"]:not(.btn-close):hover {
   background-color: rgb(252, 145, 126);
@@ -58,6 +59,61 @@ button[type="reset"]:hover {
   color: #fff;
 }
 
+
+
+button[type="buttonListCheck"] {
+  background-color: #fff;
+  border: 1px solid rgb(102, 231, 111);
+  color: rgb(102, 231, 111);
+  border-radius:0px 10px 10px 0px;
+  height: 40px;
+  width: 50%;
+}
+
+button[type="buttonListCheck"]:hover {
+  background-color: rgb(102, 231, 111);
+  border-color: rgb(102, 231, 111);
+  /* transform:translateX(2px) translateY(-2px); */
+  /* box-shadow:  -2px 2px 0px rgb(78, 208, 87),
+    2px -2px 0px #ffffff; */
+  transition-duration:0.5s;
+  color: #fff;
+}
+button[type="buttonListLike"] {
+  background-color: #fff;
+  border: 1px solid rgb(252, 145, 126);
+  color: rgb(252, 145, 126);
+  border-radius: 0px 0px 0px 0px;
+  height: 40px;
+  width: 50%;
+}
+
+button[type="buttonListLike"]:hover {
+  background-color: rgb(252, 145, 126);
+  border-color: rgb(252, 145, 126);
+  /* transform:translateX(2px) translateY(-2px); */
+  /* box-shadow:  -2px 2px 0px rgb(250, 122, 99),
+    2px -2px 0px #ffffff; */
+    transition-duration:0.5s;
+  color: #fff;
+}
+button[type="submitSearch"] {
+  background-color: #fff;
+  border: solid 0.5px #B4B4B4;
+  color:#B4B4B4;
+  height: 40px;
+  width: 40px;
+  border-radius: 0px 10px 10px 0px;
+  display: inline;
+}
+button[type="submitSearch"]:hover {
+  background-color: lightgreen;
+  border-color: lightgreen;
+  color: #fff;
+  
+}
+
+
 /* .outline-dark {
   color: #212529;
   border-color: #212529;
@@ -74,7 +130,7 @@ button[type="reset"]:hover {
 }
 button.like {
   color: rgb(252, 145, 126);
-}
+} 
 button.like:hover {
   color: #fff;
   background-color: rgb(252, 145, 126);
