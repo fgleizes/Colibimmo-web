@@ -1,9 +1,12 @@
 import axios from "axios"
+import {ProjectCard} from '../components/utilities/ProjectCard'
 
-
-export const showProperty = () => {
-    return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/2`)
+export const showProperty = (idProject) => {
+    
+    console.log(idProject)
+    return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/${idProject}`)
     .then(res => {
+       
        return res.data
        
     })

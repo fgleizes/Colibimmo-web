@@ -46,9 +46,6 @@ const Header = () => {
             {contextUser.isLoggedIn && <Link to="/profile" className="menuLink">Profile</Link>}
           </li>
           <li>
-            <Link to="/voir un bien" className="menuLink">Voir un bien</Link>
-          </li>
-          <li>
             <Link to="/liste biens" className="menuLink">Liste biens</Link>
           </li>
         </ul>

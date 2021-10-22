@@ -43,9 +43,9 @@ ReactDOM.render(
           <Route path="/estimate">
             <EstimateView />
           </Route>
-          <Route path="/voir un bien">
-            <PropertyView />
-          </Route>
+          <Route path="/Property/:id" children={<PropertyView  />} />
+            {/* <PropertyView  />
+          </Route> */}
           <Route path="/liste biens">
             <ListPropertyView />
           </Route>

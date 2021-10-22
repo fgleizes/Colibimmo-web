@@ -6,31 +6,23 @@ import ListInfoProperty from '../utilities/ListInfoProperty'
 import ImgProperty from '../utilities/ImgProperty'
 import OptionProperty from '../utilities/OptionProperty';
 
-export const PropertyInfoContainer = () => {
-    const [dataProperty,setDataProperty] = useState({});
-    const [isLoading,setIsLoading] = useState(true)
+export const PropertyInfoContainer = ({resProject}) => {
 
-    useEffect(() => {
-        showProperty().then(res => {
-            console.log(res)
-            setDataProperty(res)
-            setIsLoading(false)
-        });
-    },[])
+    console.log(resProject)
 
     return (
         <div className="containerPropertyView">
-            {!isLoading &&
+            
                 <div className="InfoProperty">
                     <ImgProperty/>
-                    <ListInfoProperty dataProperty={dataProperty}/>
+                    <ListInfoProperty resProject={resProject}/>
                     <ul>
-                        {dataProperty.project_option.map(option => (
+                        {resProject.project_option.map(option => (
                             <OptionProperty optionId={option.id_Option} key={option.id}/>
                         ))}
                     </ul>
                 </div>
-            }
+            
         </div>
     );
 }
