@@ -20,7 +20,7 @@ function PropertyView() {
         setDataProperty(res)
         setIsLoading(false)
     });
-},[])
+},[id])
   return (
     <div className="PropertyView">   
     {!isLoading &&   
