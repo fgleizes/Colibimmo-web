@@ -1,35 +1,30 @@
-import "./Header.css";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import { useState, useContext, } from "react";
-import ConfirmModal from './Modal';
+import { ConfirmModal } from './Modal';
 import { UserContext } from "../../user-context";
 import { AiFillHome, AiOutlineHeart } from 'react-icons/ai';
+import { CgProfile } from 'react-icons/cg';
+import "./Header.css";
 
 const Header = () => {
   const contextUser = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const confirmLogout = () => {
+    contextUser.logout()
+    handleClose()
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
   return (
     <header>
       <nav>
         <div className="logo"><Link to="/">ColibImmo</Link></div>
         <ul>
           <li>
-            <Link to="/" className="menuLink"><AiFillHome /></Link>
+            <Link to="/" className="menuLink icon"><AiFillHome /></Link>
           </li>
           <li>
             <Link to="/buy" className="menuLink">Acheter</Link>
@@ -40,21 +35,32 @@ const Header = () => {
           <li>
             <Link to="/estimate" className="menuLink">Estimer un bien</Link>
           </li>
-          <li>
-            {contextUser.isLoggedIn && <Link to="/profile" className="menuLink">Profile</Link>}
-          </li>
         </ul>
         <div className="nav-right">
-          <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="like"><AiOutlineHeart /></Button></Link>
-          {contextUser.isLoggedIn
-            // ? <Link to="/logout" title="Me déconnecter de mon compte" onClick={contextUser.logout}><Button type="button">Déconnexion</Button></Link>
-            ? <Link to="/logout" title="Me déconnecter de mon compte" onClick={openModal}><Button type="button">Déconnexion</Button></Link>
-            : <Link to="/login" title="Me connecter à mon compte"><Button type="button">Connexion</Button></Link>
-          }
-
-          <ConfirmModal></ConfirmModal>
+            {contextUser.isLoggedIn && 
+              <>
+                <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="menuLink like"><AiOutlineHeart className="icon" /></Button></Link>
+                <Link to="/profile">
+                  <Button type="button" className="menuLink" title="Accéder à mon compte">
+                    <CgProfile className="icon profile" /> {contextUser.user.firstname} {contextUser.user.lastname}
+                  </Button>
+                </Link>
+              </>
+            }
+            {contextUser.isLoggedIn
+              ? <Button type="button" title="Me déconnecter de mon compte" handleClick={handleShow} className="menuLink">Déconnexion</Button>
+              : <Link to="/login" title="Me connecter à mon compte"><Button type="button" className="menuLink">Connexion</Button></Link>
+            }
         </div>
       </nav>
+      <ConfirmModal
+        show={show}
+        onConfirm={confirmLogout}
+        handleClose={handleClose}
+        centered
+        title="Déconnexion"
+        body="Etes-vous sûr(e) de vouloir vous déconnecter ?"
+      />
     </header>
   );
 }

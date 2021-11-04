@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import BuyView from './components/views/BuyView';
 import Header from './components/utilities/Header';
 import HomeView from './components/views/HomeView';
-import BuyView from './components/views/BuyView';
 import RentView from './components/views/RentView';
-import EstimateView from './components/views/EstimateView';
 import LoginView from './components/views/LoginView';
+import ProfileView from './components/views/ProfileView';
 import RegisterView from './components/views/RegisterView';
+import EstimateView from './components/views/EstimateView';
 import { UserContextProvider } from "./user-context"
 import {
   BrowserRouter as Router,
@@ -16,14 +17,13 @@ import {
   Redirect
 } from "react-router-dom";
 import './index.css';
-import { ProfileView } from './components/views/ProfileView';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <UserContextProvider>
       <Router>
-        <Header />        
+        <Header />
         <Switch>
           <Route path="/home">
             <HomeView />
