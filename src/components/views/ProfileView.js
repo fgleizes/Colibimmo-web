@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../user-context";
 import { getProfile } from "../../api/userAPI"
-import { getRole } from "../../api/roleAPI"
+import { getPerson } from "../../api/personAPI";
 import { Redirect } from "react-router-dom"
 import { getAddress } from "../../api/adresseAPI";
 import { getAgency } from "../../api/agencyAPI";
@@ -23,10 +23,13 @@ const ProfileView = () => {
             getProfile(token)
                 .then(response => {
                     if (response.status === 200) {
-                        const user = response.data;
-                        getRole(user.id_Role, token)
+                        const user = response.data
+                        console.log(user.role)
+                        console.log(user.id)
+                        getPerson(user.id, token)
                             .then(response => {
-                                setUserProfile({ ...user, "role": response.data.name })
+                                setUserProfile({ ...user, "person": response.data })
+                                
                             })
 
                         if (user.id_Address != null) {
@@ -90,7 +93,7 @@ const ProfileView = () => {
                                     <li>Nom : {contextUser.user.lastname}</li>
                                     <li>Téléphone : {userProfile.phone}</li>
                                     <li>Email : {userProfile.mail}</li>
-                                    <li>Rôle : {userProfile.role}</li>
+                                    <li>Rôle : { JSON.stringify(userProfile.role.name).split('"')}</li>
                                     <li>Créé le : {formatDate(userProfile.created_at)}</li>
                                     {userProfile.updated_at && <li>Modifié le : {formatDate(userProfile.updated_at)}</li>}
                                 </ul>
