@@ -5,6 +5,8 @@ import { getPerson } from "../../api/personAPI";
 import { Redirect } from "react-router-dom"
 import { getAddress } from "../../api/adresseAPI";
 import { getAgency } from "../../api/agencyAPI";
+import { getProjectByPerson } from "../../api/projectByPersonAPI";
+import { getAppointmentByProject } from "../../api/appointmentByProject";
 import { Tab, Tabs } from 'react-bootstrap';
 import "./ProfileView.css"
 
@@ -15,8 +17,10 @@ const ProfileView = () => {
     const [userAddress, setUserAddress] = useState({})
     const [agencyDetails, setAgencyDetails] = useState({})
     const [agencyAddress, setAgencyAddress] = useState({})
-    const [userKey, setUserKey] = useState('userInformations');
-    const [agencyKey, setAgencyKey] = useState('agencyInformations');
+    const [userKey, setUserKey] = useState('userInformations')
+    const [agencyKey, setAgencyKey] = useState('agencyInformations')
+    const [projectUser, setProjectUser] = useState({})
+    const [projectAppointment, setProjectAppointment] = useState({})
 
     useEffect(() => {
         if(token) {
@@ -52,6 +56,22 @@ const ProfileView = () => {
                                             })
                                     }
                                 })
+                        }
+                        if (user.id != null) {
+                            getProjectByPerson(user.id, token)
+                                .then(response => {
+                                    const userProject = response.data;
+                                    setProjectUser(userProject)
+                                    console.log(userProject)
+                                if (userProject != null) {
+                                    getAppointmentByProject(userProject.id, token)
+                                        .then(response => {
+                                            const dateProject = response.data;
+                                            setProjectUser(dateProject)
+                                            console.log(dateProject)
+                                        })
+                                }
+                            })
                         }
                     }
                 })
