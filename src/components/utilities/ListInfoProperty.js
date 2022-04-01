@@ -1,20 +1,31 @@
+import OptionProperty from '../utilities/OptionProperty';
+
 function ListInfoProperty(props) {
-    // console.log(props)
     const {resProject} = props
-    // const options = props.option
-    // const className = props.className
-    // const type = props.type
+    const numberOfBedroom = resProject.room_project.filter(room => room.name === "chambre").length;
+    const numberOfRoom = resProject.room_project.filter(room => room.name !== "salle de bains" && room.name !== "cuisine").length;
 
     return (
-        <ul className="descProperty">
-            <li><h2>{resProject.id_Type_project} {resProject.id_Statut_project}</h2></li>
-            <li>5 PIECES : 3 CHAMBRES //données à recuperer//<hr></hr></li>
-            <li>prix : {resProject.price}</li>
-            <li>surface : {resProject.area}</li>
-            <li>adresse : {resProject.id_Adresse}</li>
-            <li>description : {resProject.description}</li>
-            <li>index energetique : {resProject.id_Energy_index}</li>
-        </ul>
+        <div className="descProperty">
+            <ul>
+                <li><h2>{resProject.type_Project.name === "vente" ? "A vendre" : "A louer"}</h2></li>
+                <li><strong>Référence : {resProject.reference}</strong></li>
+                <li>{numberOfRoom} PIECE{numberOfRoom > 1 && "S"} : {numberOfBedroom} CHAMBRE{numberOfBedroom > 1 && "S"}</li>
+                <hr />
+                <li><h3>Détails : </h3></li>
+                <li>Prix : {resProject.price} €</li>
+                <li>Surface : {resProject.area} m²</li>
+                <li>Ville : {resProject.id_Address.City.zip_code} {resProject.id_Address.City.name}</li>
+                <li>Description : {resProject.description}</li>
+                <li>Index énergétique : {resProject.energieIndex.index}</li>
+            </ul>
+            <ul>
+                <li><h3>Options : </h3></li>
+                {resProject.option_project.map(option => (
+                    <OptionProperty optionId={option.id_Option} key={option.id}/>
+                ))}
+            </ul>
+        </div>
     );
 }
 

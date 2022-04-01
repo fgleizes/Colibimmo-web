@@ -94,7 +94,16 @@ button[type="buttonListLike"]:hover {
   /* transform:translateX(2px) translateY(-2px); */
   /* box-shadow:  -2px 2px 0px rgb(250, 122, 99),
     2px -2px 0px #ffffff; */
-    transition-duration:0.5s;
+  transition-duration:0.5s;
+  color: #fff;
+}
+button[type="buttonListLike"].liked {
+  background-color: rgb(252, 145, 126);
+  border-color: rgb(252, 145, 126);
+  /* transform:translateX(2px) translateY(-2px); */
+  /* box-shadow:  -2px 2px 0px rgb(250, 122, 99),
+    2px -2px 0px #ffffff; */
+  transition-duration:0.5s;
   color: #fff;
 }
 button[type="submitSearch"] {
@@ -102,7 +111,7 @@ button[type="submitSearch"] {
   border: solid 0.5px #B4B4B4;
   color:#B4B4B4;
   height: 40px;
-  width: 40px;
+  /* width: 40px; */
   border-radius: 0px 10px 10px 0px;
   display: inline;
 }

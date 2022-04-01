@@ -1,9 +1,11 @@
 .profileView{
-    list-style: none;
+    /* list-style: none; */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     min-height: 50vh;
+    width: 80%;
+    margin: 1rem auto;
 }
 .profileView h1{
     text-align: center;

@@ -1,10 +1,10 @@
-.userContainer, .agencyContainer {
+/* .tabsContainer {
   flex-basis: 45%;
-}
-.userContainer h2, .agencyContainer h2 {
-  flex-basis: 100%;
+} */
+.tabsContainer h2 {
+  /* flex-basis: 100%; */
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 1.5rem;
 }
 .userProfile,
 .agencyDetails {

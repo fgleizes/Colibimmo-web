@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-
 export const UserContext = React.createContext({
   isLoggedIn: false,
   token: "",
   user: {},
+  favorites: {},
   setIsLoggedIn: () => { },
   setToken: () => { },
   setUser: () => { },
+  setFavorites: () => { },
   login: () => { },
   logout: () => { }
 });
@@ -15,14 +16,23 @@ export const UserContext = React.createContext({
 export const UserContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState(null)
-  const [user, setUser] = useState({ lastname: "", firstname: "" })
+  const [user, setUser] = useState({id: "", lastname: "", firstname: "" })
+  const [favorites, setFavorites] = useState([])
   const saveToken = (token) => {
     setToken(token)
   }
   const saveUser = (user) => {
+    // user.id = user.id
     user.firstname = user.firstname.charAt(0).toUpperCase() + user.firstname.substring(1).toLowerCase()
     user.lastname = user.lastname.charAt(0).toUpperCase() + user.lastname.substring(1).toLowerCase()
     setUser(user)
+  }
+  const saveFavorite = (favorite) => {
+    setFavorites([...favorites, favorite])
+  }
+  const saveFavorites = (favorites) => {
+    setFavorites(favorites)
+    localStorage.setItem("favorites", JSON.stringify(favorites))
   }
   const saveIsLoggedIn = (isLoggedIn) => {
     setIsLoggedIn(isLoggedIn)
@@ -38,19 +48,24 @@ export const UserContextProvider = ({ children }) => {
   const logout = () => {
     setIsLoggedIn(false)
     saveToken(null)
-    saveUser({ lastname: "", firstname: "" })
-    localStorage.removeItem("isLoggedIn")
-    localStorage.removeItem("userToken")
-    localStorage.removeItem('user')
+    saveUser({ id: "", lastname: "", firstname: "" })
+    setFavorites([])
+    // localStorage.removeItem("isLoggedIn")
+    // localStorage.removeItem("userToken")
+    // localStorage.removeItem('user')
+    // localStorage.removeItem('favorites')
+    localStorage.clear();
   }
-      
   const userData = {
     isLoggedIn: localStorage.getItem("isLoggedIn") ? localStorage.getItem("isLoggedIn")  : isLoggedIn,
     token: localStorage.getItem("userToken") ? localStorage.getItem("userToken") : token,
     user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : user,
+    favorites: localStorage.getItem("favorites") ? JSON.parse(localStorage.getItem("favorites")) : favorites,
     setIsLoggedIn: saveIsLoggedIn,
     setToken: saveToken,
     setUser: saveUser,
+    setFavorites: saveFavorites,
+    setFavorite: saveFavorite,
     login: login,
     logout: logout
   }

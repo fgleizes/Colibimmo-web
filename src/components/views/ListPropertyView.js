@@ -1,5 +1,5 @@
 
-import { listPropertyByCity } from "../../api/propertyAPI"
+import { listProperty } from "../../api/propertyAPI"
 import { useEffect, useState } from "react"
 import ProjectCard from '../utilities/ProjectCard'
 import './PropertyView.css'
@@ -10,7 +10,7 @@ function ListPropertyView () {
     const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
-        listPropertyByCity().then(resList => {
+        listProperty().then(resList => {
             setDataPropertyList(resList)
             setIsLoading(false)
         });

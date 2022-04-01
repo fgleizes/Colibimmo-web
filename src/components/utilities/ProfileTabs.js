@@ -16,8 +16,8 @@ export const UserTabs = (props) => {
   const [key, setKey] = useState('userInformations')
 
   return (
-    <div className="userContainer">
-      <h2>Mon profil : </h2>
+    <div className="tabsContainer">
+      <h2>Mon profil</h2>
       <div className="userProfile">
         <Tabs
           activeKey={key}
@@ -60,8 +60,8 @@ export const AgencyTabs = (props) => {
   const [key, setKey] = useState('agencyInformations')
 
   return (
-    <div className="agencyContainer">
-      <h2>Mon agence : </h2>
+    <div className="tabsContainer">
+      <h2>Mon agence</h2>
       <div className="agencyDetails">
         <Tabs
           activeKey={key}
@@ -113,5 +113,73 @@ const AddressTab = (props) => {
       {address.department && <li>Département : {address.department}</li>}
       {address.region && <li>Région : {address.region}</li>}
     </ul>
+  )
+}
+
+export const ProjectsTabs = (props) => {
+  const projects = props.projects
+  const currentProjects = projects.filter(project => project.id_Statut_project.id === 1)
+  const completedProjects = projects.filter(project => project.id_Statut_project.id === 2 || project.id_Statut_project.id === 3)
+  const [key, setKey] = useState('currentProjects')
+
+  return (
+    <div className="tabsContainer">
+      <h2>Mes projets</h2>
+      <div className="userProfile">
+        <Tabs
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
+          variant="tabs"
+        >
+          {currentProjects.length > 0 &&
+            <Tab eventKey="currentProjects" title="Projets en cours">
+              <ProjectsTab myProjects={currentProjects} />
+            </Tab>
+          }
+
+          {completedProjects.length > 0 &&
+            <Tab eventKey="completedProjects" title="Projets achevés">
+              <ProjectsTab myProjects={completedProjects} />
+            </Tab>
+          }
+        </Tabs>
+      </div>
+    </div>
+  )
+}
+
+const ProjectsTab = (props) => {
+  const myProjects = props.myProjects
+  const salesProjects = myProjects.filter(project => project.type_Project.id === 2)
+  const purchaseProjects = myProjects.filter(project => project.type_Project.id === 1)
+  const rentalProjects = myProjects.filter(project => project.type_Project.id === 3)
+
+  return (
+    <div>
+      {salesProjects.length > 0 && 
+        <ul>
+          <li><strong>Ventes :</strong></li>
+          {salesProjects.map((project, index) => 
+            <li key={index}>{project.reference}</li>
+          )}
+        </ul>
+      }
+      {purchaseProjects.length > 0 &&
+        <ul>
+          <li><strong>Achats :</strong></li>
+          {purchaseProjects.map((project, index) =>
+            <li key={index}>{project.reference}</li>
+          )}
+        </ul>
+      }
+      {rentalProjects.length > 0 &&
+        <ul>
+          <li><strong>Locations :</strong></li>
+          {rentalProjects.map((project, index) =>
+            <li key={index}>{project.reference}</li>
+          )}
+        </ul>
+      }
+    </div>
   )
 }

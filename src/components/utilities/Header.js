@@ -36,12 +36,12 @@ const Header = () => {
           <li>
             <Link to="/estimate" className="menuLink">Estimer un bien</Link>
           </li>
-          <li>
+          {/* <li>
             {contextUser.isLoggedIn && <Link to="/profile" className="menuLink">Profile</Link>}
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link to="/liste biens" className="menuLink">Liste biens</Link>
-          </li>
+          </li> */}
         </ul>
         
         <div className="nav-right">
@@ -50,7 +50,12 @@ const Header = () => {
           </div> */}
           {contextUser.isLoggedIn && 
             <>
-              <Link to="/maSelection" title="Voir ma liste de sélection"><Button type="button" className="menuLink like"><AiOutlineHeart className="icon" /></Button></Link>
+              <Link to="/mySelection" title="Voir ma liste de sélection">
+                <Button type="button" className="menuLink like">
+                  <AiOutlineHeart className="icon" />
+                  <div>{contextUser.favorites && contextUser.favorites.length}</div>
+                </Button>
+              </Link>
               <Link to="/profile">
                 <Button type="button" className="menuLink" title="Accéder à mon compte">
                   <CgProfile className="icon profile" /> {contextUser.user.firstname} {contextUser.user.lastname}

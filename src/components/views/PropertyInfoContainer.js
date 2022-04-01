@@ -1,11 +1,9 @@
 
 import ListInfoProperty from '../utilities/ListInfoProperty'
 import ImgProperty from '../utilities/ImgProperty'
-import OptionProperty from '../utilities/OptionProperty';
+// import OptionProperty from '../utilities/OptionProperty';
 
 export const PropertyInfoContainer = ({resProject}) => {
-
-    console.log(resProject)
 
     return (
         <div className="containerPropertyView">
@@ -13,11 +11,12 @@ export const PropertyInfoContainer = ({resProject}) => {
                 <div className="InfoProperty">
                     <ImgProperty/>
                     <ListInfoProperty resProject={resProject}/>
-                    <ul>
-                        {resProject.project_option.map(option => (
+                    {/* <h3>Options : </h3>
+                    <ul className='mt-3'>
+                        {resProject.option_project.map(option => (
                             <OptionProperty optionId={option.id_Option} key={option.id}/>
                         ))}
-                    </ul>
+                    </ul> */}
                 </div>
             
         </div>
