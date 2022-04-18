@@ -3,7 +3,7 @@ import { UserContext } from "../../user-context";
 import { getProfile } from "../../api/userAPI"
 import { getPerson } from "../../api/personAPI";
 import { Redirect } from "react-router-dom"
-//import { getAddress } from "../../api/adresseAPI";
+import { getAddress } from "../../api/adresseAPI";
 import { getAgency } from "../../api/agencyAPI";
 import { getProjectByPerson } from "../../api/projectByPersonAPI";
 import { getAppointmentByProject } from "../../api/appointmentByProject";
