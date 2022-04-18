@@ -67,9 +67,8 @@ const ProfileView = () => {
                             })
                         }
                     }
-                })
-        }
-    }, [contextUser]);
+            
+    , [contextUser])}
     
     if (!contextUser.isLoggedIn) {
         return <Redirect to="/home" />
@@ -157,6 +156,6 @@ const ProfileView = () => {
             }
         </div>
     )
-}
+})}
 
-export default ProfileView;
+export default ProfileView
