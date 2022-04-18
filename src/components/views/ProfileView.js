@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../user-context";
-<<<<<<< HEAD
 import { getProfile } from "../../api/userAPI"
 import { getPerson } from "../../api/personAPI";
 import { Redirect } from "react-router-dom"
@@ -9,19 +8,11 @@ import { getAgency } from "../../api/agencyAPI";
 import { getProjectByPerson } from "../../api/projectByPersonAPI";
 import { getAppointmentByProject } from "../../api/appointmentByProject";
 import { Tab, Tabs } from 'react-bootstrap';
-=======
-import { listProjectsByPerson } from "../../api/propertyAPI";
-import { getAgency } from "../../api/agencyAPI";
-import { getProfile } from "../../api/userAPI"
-import { Redirect } from "react-router-dom"
-import { UserTabs, AgencyTabs, ProjectsTabs } from "../utilities/ProfileTabs"
->>>>>>> 48b7ba63bfa30f11f93c7fab1bfe6a67f74d9d09
 import "./ProfileView.css"
 
 const ProfileView = () => {
     const contextUser = useContext(UserContext);
     const [userProfile, setUserProfile] = useState({})
-<<<<<<< HEAD
     const [userAddress, setUserAddress] = useState({})
     const [agencyDetails, setAgencyDetails] = useState({})
     const [agencyAddress, setAgencyAddress] = useState({})
@@ -29,16 +20,11 @@ const ProfileView = () => {
     const [agencyKey, setAgencyKey] = useState('agencyInformations')
     const [projectUser, setProjectUser] = useState({})
     const [projectAppointment, setProjectAppointment] = useState({})
-=======
-    const [agency, setAgency] = useState()
-    const [myProjects, setMyProjects] = useState()
->>>>>>> 48b7ba63bfa30f11f93c7fab1bfe6a67f74d9d09
 
     useEffect(() => {
         if (contextUser.token) {
             getProfile(contextUser.token)
                 .then(response => {
-<<<<<<< HEAD
                     if (response.status === 200) {
                         const user = response.data
                         console.log(user.role)
@@ -47,25 +33,8 @@ const ProfileView = () => {
                             .then(response => {
                                 setUserProfile({ ...user, "person": response.data })
                                 
-=======
-                    if (response && response.status === 200) {
-                        setUserProfile(response.data)
-
-                        listProjectsByPerson(contextUser.user.id).then(response => {
-                            if (response && response.status === 200) {
-                                setMyProjects(response.data)
-                            }
-                        })
-
-                        if(response.data.id_Agency) {
-                            getAgency(response.data.id_Agency, contextUser.token).then(response => {
-                                if (response && response.status === 200) {
-                                    setAgency(response.data)
-                                }
->>>>>>> 48b7ba63bfa30f11f93c7fab1bfe6a67f74d9d09
                             })
                         }
-<<<<<<< HEAD
 
                         if (user.id_Agency != null) {
                             getAgency(user.id_Agency, token)
@@ -98,9 +67,6 @@ const ProfileView = () => {
                             })
                         }
                     }
-=======
-                    } 
->>>>>>> 48b7ba63bfa30f11f93c7fab1bfe6a67f74d9d09
                 })
         }
     }, [contextUser]);
@@ -113,7 +79,6 @@ const ProfileView = () => {
         <div className="profileView">
             <h1>Détails de {contextUser.user.firstname} {contextUser.user.lastname}</h1>
             {userProfile && userProfile.id &&
-<<<<<<< HEAD
                 <div className="userContainer">
                     <h2>Mon profil : </h2>
                     <div className="userProfile">
@@ -181,9 +146,6 @@ const ProfileView = () => {
                         </div>
                     } */}
                 </div>
-=======
-                <UserTabs user={userProfile} />
->>>>>>> 48b7ba63bfa30f11f93c7fab1bfe6a67f74d9d09
             }
 
             {userProfile && myProjects && myProjects.length > 0 &&
