@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { Link, Redirect } from "react-router-dom"
 import { login, getProfile } from "../../api/userAPI"
+import { getFavorite } from "../../api/propertyAPI"
 import { Button } from "../utilities/Button"
 import { LoginForm } from "../utilities/Form"
 import "./LoginView.css"
@@ -18,14 +19,19 @@ const LoginView = () => {
       if (response.status === 200) {
         const token = response.data.access_token
         getProfile(token)
-        .then(response => {
-          if (response.status === 200) {
-            contextUser.login(token, { firstname: response.data.firstname, lastname: response.data.lastname })
+          .then(response => {
+            if (response.status === 200) {
+              contextUser.login(token, { id: response.data.id, firstname: response.data.firstname, lastname: response.data.lastname })
               setIsLoggin(true)
+              getFavorite(token)
+                .then(response => {
+                  if (response.status === 200) {
+                    contextUser.setFavorites(response.data)
+                  }
+                })
             }
           })
-      } 
-      else {
+      } else {
         setIsLoggin(false)
       }
     })

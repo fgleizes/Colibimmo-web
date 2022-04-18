@@ -49,6 +49,8 @@ export const getProfile = (token) => {
         .catch(error => {
             console.log(error)
             console.log(error.response)
+            console.log(error.response.status)
+            return error.response.status
         })
 }
 

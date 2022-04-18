@@ -9,7 +9,11 @@ import LoginView from './components/views/LoginView';
 import ProfileView from './components/views/ProfileView';
 import RegisterView from './components/views/RegisterView';
 import EstimateView from './components/views/EstimateView';
+import PropertyView from './components/views/PropertyView';
+import SelectionView from './components/views/SelectionView';
+// import ListPropertyView from './components/views/ListPropertyView'
 import { UserContextProvider } from "./user-context"
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,10 +44,18 @@ ReactDOM.render(
           <Route path="/estimate">
             <EstimateView />
           </Route>
+          <Route path="/Property/:id" children={<PropertyView  />} />
+            {/* <PropertyView  />
+          </Route> */}
+          {/* <Route path="/liste biens">
+            <ListPropertyView />
+          </Route> */}
           <Route path="/login">
             <LoginView />
           </Route>
-          <Route path="/mySelection"></Route>
+          <Route path="/mySelection">
+            <SelectionView />
+          </Route>
           <Route path="/register">
             <RegisterView />
           </Route>
