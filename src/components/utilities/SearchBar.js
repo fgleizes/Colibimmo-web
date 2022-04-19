@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useLocation, useHistory, useRouteMatch } from "react-router-dom"
 import { Button } from "../utilities/Button"
-import "./SearchBar.css"
+import "./searchBar.css"
 
 const SearchBar = (props) =>{
    const { numberOfResults} = props
