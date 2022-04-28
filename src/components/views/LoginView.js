@@ -16,7 +16,7 @@ const LoginView = () => {
     event.preventDefault()
 
     login(mail,password).then(response => {
-      if (response.status === 200) {
+      if (response && response.status === 200) {
         const token = response.data.access_token
         getProfile(token)
           .then(response => {
