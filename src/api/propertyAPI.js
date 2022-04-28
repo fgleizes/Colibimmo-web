@@ -48,6 +48,13 @@ export const listProjectsByPerson = (idPerson) => {
             return response
         })
 }
+export const listProjectsByAgent = (idAgent) => {
+    
+    return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/personAgent/${idAgent}` )
+        .then(response => {
+            return response
+        })
+}
 export const listProjectsBySearch = (searchTherm, idTypeProject) => {
 
     return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/search${searchTherm}&id_Type_project=${idTypeProject}`)

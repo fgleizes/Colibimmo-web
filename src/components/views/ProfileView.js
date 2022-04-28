@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../user-context";
-import { listProjectsByPerson } from "../../api/propertyAPI";
+import { listProjectsByPerson, listProjectsByAgent } from "../../api/propertyAPI";
 import { getAgency } from "../../api/agencyAPI";
 import { getProfile } from "../../api/userAPI"
 import { Redirect } from "react-router-dom"
@@ -20,11 +20,21 @@ const ProfileView = () => {
                     if (response && response.status === 200) {
                         setUserProfile(response.data)
 
-                        listProjectsByPerson(contextUser.user.id).then(response => {
-                            if (response && response.status === 200) {
-                                setMyProjects(response.data)
-                            }
-                        })
+                        if(response.data.id_Role === 4) { // ==> role Agent
+                            console.log('Agent')
+                            listProjectsByAgent(contextUser.user.id).then(response => {
+                                if (response && response.status === 200) {
+                                    console.log(response)
+                                    setMyProjects(response.data)
+                                }
+                            })
+                        } else {
+                            listProjectsByPerson(contextUser.user.id).then(response => {
+                                if (response && response.status === 200) {
+                                    setMyProjects(response.data)
+                                }
+                            })
+                        }
 
                         if(response.data.id_Agency) {
                             getAgency(response.data.id_Agency, contextUser.token).then(response => {
