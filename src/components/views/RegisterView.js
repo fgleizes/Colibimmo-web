@@ -11,7 +11,7 @@ function RegisterView() {
   const handleSubmit = (event,user) => {
     event.preventDefault();
     register(user).then(response => {
-      if (response.status === 201) {
+      if (response && response.status === 201) {
         setIsRegister(true)
       } else {
         setIsRegister(false)
