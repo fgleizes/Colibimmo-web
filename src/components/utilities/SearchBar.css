@@ -3,3 +3,7 @@ form.searchBar {
   display: flex;
   flex-direction: row;
 }
+
+form.searchBar input {
+  margin-bottom: 0;
+}

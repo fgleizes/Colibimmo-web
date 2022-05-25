@@ -55,7 +55,7 @@ const ProjectCard = (props) => {
             <div className="rightCard">
                 <div className="listDescProperty">
                     <h2 className="price">{new Intl.NumberFormat().format(itemProject.price)} €{itemProject.id_Type_project.name === "location" && "/mois"}</h2>
-                    <p className="typeProperty">{itemProject.id_Type_project.name === "vente" ? "A vendre" : "A louer" }</p>
+                    <p className="typeProperty">{itemProject.id_Type_project.name === "Vente" ? "A vendre" : "A louer" }</p>
                     <p className="location">{itemProject.id_Address.city.zip_code && itemProject.id_Address.city.zip_code} {itemProject.id_Address.city.name && itemProject.id_Address.city.name}</p>
                     <div className="detailsProperty">
                         <p className="nbRoom">{numberOfRoom} pièce{numberOfRoom > 1 && "s"} / </p>
