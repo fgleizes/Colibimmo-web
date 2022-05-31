@@ -25,9 +25,11 @@ function HomeView() {
           <h2>
             Les dernières annonces :
           </h2>
-          {dataPropertyList.map((itemProject, index) =>
-            <ProjectCard itemProject={itemProject} key={index} />
-          )}
+          <div className="containerProperty">
+            {dataPropertyList.map((itemProject, index) =>
+              <ProjectCard itemProject={itemProject} key={index} />
+            )}
+          </div>
         </div>
       }
     </div>
