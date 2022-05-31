@@ -24,7 +24,6 @@ const ProfileView = () => {
                             console.log('Agent')
                             listProjectsByAgent(contextUser.user.id).then(response => {
                                 if (response && response.status === 200) {
-                                    console.log(response)
                                     setMyProjects(response.data)
                                 }
                             })

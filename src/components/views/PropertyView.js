@@ -1,19 +1,16 @@
 
 import {  useEffect, useState } from "react"
-import {  showProperty } from "../../api/propertyAPI";
+import { useParams } from "react-router-dom"
+import {  showProperty } from "../../api/propertyAPI"
+import { PropertyInfoContainer } from './PropertyInfoContainer'
 import './PropertyView.css'
-
-import {PropertyInfoContainer} from './PropertyInfoContainer'
-import { useParams } from "react-router-dom";
-
 
 function PropertyView() {
   const {id} = useParams()
-  const [dataProperty,setDataProperty] = useState({});
+  const [dataProperty,setDataProperty] = useState({})
   const [isLoading,setIsLoading] = useState(true)
 
   useEffect(() => {
-
     showProperty(id).then(res => {
       setDataProperty(res)
       setIsLoading(false)

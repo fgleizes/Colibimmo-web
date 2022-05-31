@@ -1,9 +1,6 @@
-// import "./HomeView.css"
-// import { UserContext } from "../../App";
-import { useContext, } from "react";
+import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../../user-context";
 import { listPropertyHomeView } from "../../api/propertyAPI"
-import { useEffect, useState } from "react"
 import ProjectCard from '../utilities/ProjectCard'
 import './PropertyView.css'
 

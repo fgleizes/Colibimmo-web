@@ -1,14 +1,9 @@
 import axios from "axios"
-// import { useContext, } from "react";
-// import { UserContext } from "../user-context";
-// import { refresh } from "./userAPI"
-
 export const showProperty = (idProject) => {
     return axios.get(`http://api.colibimmo.cda.ve.manusien-ecolelamanu.fr/public/project/${idProject}`)
         .then(res => {
             return res.data
         })
-
 }
 
 export const showPropertyFavorites = (idPerson) => {
@@ -16,7 +11,6 @@ export const showPropertyFavorites = (idPerson) => {
         .then(res => {
             return res.data
         })
-
 }
 
 export const showOption = (id_Option) => {

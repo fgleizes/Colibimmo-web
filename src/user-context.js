@@ -22,7 +22,6 @@ export const UserContextProvider = ({ children }) => {
     setToken(token)
   }
   const saveUser = (user) => {
-    // user.id = user.id
     user.firstname = user.firstname.charAt(0).toUpperCase() + user.firstname.substring(1).toLowerCase()
     user.lastname = user.lastname.charAt(0).toUpperCase() + user.lastname.substring(1).toLowerCase()
     setUser(user)
@@ -50,10 +49,6 @@ export const UserContextProvider = ({ children }) => {
     saveToken(null)
     saveUser({ id: "", lastname: "", firstname: "" })
     setFavorites([])
-    // localStorage.removeItem("isLoggedIn")
-    // localStorage.removeItem("userToken")
-    // localStorage.removeItem('user')
-    // localStorage.removeItem('favorites')
     localStorage.clear();
   }
   const userData = {
