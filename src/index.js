@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import BuyView from './components/views/BuyView';
 import Header from './components/utilities/Header';
+import Footer from './components/utilities/Footer';
 import HomeView from './components/views/HomeView';
 import RentView from './components/views/RentView';
 import LoginView from './components/views/LoginView';
@@ -45,11 +46,6 @@ ReactDOM.render(
             <EstimateView />
           </Route>
           <Route path="/Property/:id" children={<PropertyView  />} />
-            {/* <PropertyView  />
-          </Route> */}
-          {/* <Route path="/liste biens">
-            <ListPropertyView />
-          </Route> */}
           <Route path="/login">
             <LoginView />
           </Route>
@@ -63,6 +59,7 @@ ReactDOM.render(
             <Redirect to="/home" />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </UserContextProvider>
   </React.StrictMode>,
