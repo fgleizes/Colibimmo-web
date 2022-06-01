@@ -33,7 +33,7 @@ function RegisterView() {
   } else {
     return (
       <div className="registerView">
-        <h1 className="my-3">Inscription utilisateur</h1>
+        <h1 className="my-3">Inscription</h1>
         { isRegister === false && <h2 className="error my-3">Votre inscription n'a pas été prise en compte ! Veuillez réessayer :</h2> }
         { isRegister === undefined && <h2 className="my-3">Informations d'inscription :</h2> }
         <RegisterForm handleSubmit={handleSubmit}/>
