@@ -12,7 +12,6 @@ import RegisterView from './components/views/RegisterView';
 import EstimateView from './components/views/EstimateView';
 import PropertyView from './components/views/PropertyView';
 import SelectionView from './components/views/SelectionView';
-// import ListPropertyView from './components/views/ListPropertyView'
 import { UserContextProvider } from "./user-context"
 
 import {

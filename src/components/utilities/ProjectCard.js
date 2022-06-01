@@ -9,13 +9,8 @@ import '../utilities/Button.css'
 const ProjectCard = (props) => {
     const {itemProject} = props
     const contextUser = useContext(UserContext)
-    // const [favoriteList, setFavoriteList] = useState([]);
     const numberOfBedroom = itemProject.room_project.filter(room => room.name === "chambre").length
     const numberOfRoom = itemProject.room_project.filter(room => room.name !== "salle de bains" && room.name !== "cuisine").length
-
-    // useEffect(() => {
-    //     setFavoriteList(JSON.parse(localStorage.getItem("favorites")))
-    // }, [])
 
     const formatDate = (dateToFormat) => {
         let date = new Date(dateToFormat)
