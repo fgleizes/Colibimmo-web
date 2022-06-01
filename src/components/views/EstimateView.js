@@ -24,7 +24,6 @@ function EstimateView() {
       minLength: 10,
       maxLength: 10,
       pattern: "^0[1-9]\\d*$"
-      // pattern: "^0[1-9]\\d{8}$"
     },
     {
       name : "email",
@@ -41,24 +40,10 @@ function EstimateView() {
   ]
   return (
     <div className="estimateView">
-      <h1>Vous souhaitez faire estimer votre bien ?</h1>
-      <h2>Envoyer nous un email</h2>
-      {/* <form>
-        <input></input>
-        <input></input>
-        <input></input>
-        <input></input>
-        <textarea></textarea>
-        <div className="container-buttons">
-          <Button type="submit">Envoyer</Button>
-          <Button type="reset">Annuler</Button>
-        </div>
-      </form> */}
+      <h1 className="my-3">Vous souhaitez faire estimer votre bien ?</h1>
+      <h2 className="my-3">Envoyer nous un email</h2>
       <Form inputs={inputs}>
-        {/* <div className="container-buttons"> */}
           <Button type="submit">Envoyer</Button>
-          {/* <Button type="reset">Annuler</Button> */}
-        {/* </div> */}
       </Form>
     </div>
   );

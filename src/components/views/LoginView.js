@@ -44,8 +44,9 @@ const LoginView = () => {
 
   return (
     <div className="loginView">
-      {isLoggin === false && <h2 className="error">Echec de la connexion ! Veuillez réessayer :</h2>}
-      {isLoggin === undefined && <h2>Informations de connexion :</h2>}
+      <h1 className="my-3">Connexion utilisateur</h1>
+      {isLoggin === undefined && <h2 className="my-3">Informations de connexion :</h2>}
+      {isLoggin === false && <h2 className="error my-3">Echec de la connexion ! Veuillez réessayer :</h2>}
       <LoginForm handleSubmit={handleSubmit}/>
       <p>Vous n'avez pas encore de compte?</p>
       <Link to="/register" title="Créer votre compte">

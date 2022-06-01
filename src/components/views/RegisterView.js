@@ -22,9 +22,8 @@ function RegisterView() {
   if (isRegister === true) {
     return (
       <div className="registerView">
-        <h2>
-          Votre inscription a bien été prise en compte !
-        </h2>
+        <h1 className="my-3">Inscription utilisateur</h1>
+        <h2 className="my-3"> Votre inscription a bien été prise en compte !</h2>
         <p>Connectez-vous ici : </p>
         <Link to="/login" title="Me connecter à mon compte">
           <Button type="button">Connexion</Button>
@@ -34,8 +33,9 @@ function RegisterView() {
   } else {
     return (
       <div className="registerView">
-        { isRegister === false && <h2 className="error">Votre inscription n'a pas été prise en compte ! Veuillez réessayer :</h2> }
-        { isRegister === undefined && <h2>Informations d'inscription :</h2> }
+        <h1 className="my-3">Inscription utilisateur</h1>
+        { isRegister === false && <h2 className="error my-3">Votre inscription n'a pas été prise en compte ! Veuillez réessayer :</h2> }
+        { isRegister === undefined && <h2 className="my-3">Informations d'inscription :</h2> }
         <RegisterForm handleSubmit={handleSubmit}/>
         <p>Vous avez déjà un compte? Connectez-vous ici : </p>
         <Link to="/login" title="Créer votre compte">
